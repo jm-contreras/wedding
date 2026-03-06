@@ -45,9 +45,13 @@ body {
 }
 
 .lang-toggle {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  z-index: 10;
 }
 
 .lang-btn {

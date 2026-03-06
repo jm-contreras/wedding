@@ -54,9 +54,11 @@ function setLang(lang) {
       el.dataset.es = 'Hoy';
       el.textContent = currentLang === 'es' ? 'Hoy' : 'Today';
     } else {
-      el.dataset.en = `${diff} days away`;
-      el.dataset.es = `${diff} días`;
-      el.textContent = currentLang === 'es' ? `${diff} días` : `${diff} days away`;
+      const enText = diff === 1 ? '1 day away' : `${diff} days away`;
+      const esText = diff === 1 ? '1 día' : `${diff} días`;
+      el.dataset.en = enText;
+      el.dataset.es = esText;
+      el.textContent = currentLang === 'es' ? esText : enText;
     }
   }
 
