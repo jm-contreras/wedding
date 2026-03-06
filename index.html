@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morgan &amp; Juanma — Save the Date</title>
+  <meta name="description" content="Save the Date — Morgan &amp; Juanma, February 22, 2027, Antigua, Guatemala." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="lang-toggle" aria-label="Language selection">
+      <button
+        class="lang-btn active"
+        id="btn-en"
+        lang="en"
+        aria-pressed="true"
+        onclick="setLang('en')"
+      >EN</button>
+      <span class="lang-divider" aria-hidden="true">|</span>
+      <button
+        class="lang-btn"
+        id="btn-es"
+        lang="es"
+        aria-pressed="false"
+        onclick="setLang('es')"
+      >ES</button>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Optional hero image: add src attribute to enable -->
+    <figure class="hero" id="hero" aria-hidden="true" hidden>
+      <img id="hero-img" src="" alt="Morgan and Juanma" />
+    </figure>
+
+    <section class="card" aria-label="Save the Date announcement">
+
+      <p class="label" data-en="Save the Date" data-es="Reserva la Fecha">Save the Date</p>
+
+      <h1 class="names">Morgan &amp; Juanma</h1>
+
+      <div class="details">
+        <p class="date" data-en="Monday, February 22, 2027" data-es="Lunes 22 de febrero de 2027">Monday, February 22, 2027</p>
+        <p class="location">Antigua, Guatemala</p>
+      </div>
+
+      <p class="countdown" id="countdown" aria-live="polite"></p>
+
+      <p class="tagline"
+        data-en="We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow."
+        data-es="Celebraremos nuestra boda rodeados de ruinas, volcanes y las personas que más queremos. La invitación formal y los detalles de viaje vendrán pronto."
+      >
+        We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow.
+      </p>
+
+      <div class="calendar-buttons" role="group" aria-label="Add to calendar">
+        <button class="cal-btn" onclick="addToGoogle()">
+          <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
+        </button>
+        <button class="cal-btn" onclick="addToApple()">
+          <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
+        </button>
+        <button class="cal-btn" onclick="addToOutlook()">
+          <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
