@@ -55,7 +55,7 @@ function setLang(lang) {
       el.textContent = currentLang === 'es' ? 'Hoy' : 'Today';
     } else {
       const enText = diff === 1 ? '1 day away' : `${diff} days away`;
-      const esText = diff === 1 ? '1 día' : `${diff} días`;
+      const esText = diff === 1 ? 'falta 1 día' : `faltan ${diff} días`;
       el.dataset.en = enText;
       el.dataset.es = esText;
       el.textContent = currentLang === 'es' ? esText : enText;
@@ -131,7 +131,7 @@ function addToOutlook() {
 /* ─── Optional Hero Image ────────────────────────────────────── */
 // To enable the hero photo, set HERO_SRC to the image path or URL.
 // Leave as empty string to hide it.
-const HERO_SRC = 'ProposalHydra0062.JPG';
+const HERO_SRC = 'ProposalHydra0062.png';
 
 (function initHero() {
   if (!HERO_SRC) return;

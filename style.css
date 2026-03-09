@@ -1,9 +1,9 @@
 /* ─── Tokens ─────────────────────────────────────────────────── */
 :root {
   --cream:      #F5F0E8;
-  --terracotta: #C2703E;
-  --sage:       #9CAF88;
-  --gold:       #C9A84C;
+  --ruby:       #8B1F22;
+  --sage:       #6B7A3D;
+  --gold:       #C47A2A;
   --charcoal:   #3D3530;
   --muted:      #7A6E68;
 
@@ -68,7 +68,7 @@ body {
 }
 
 .lang-btn:hover {
-  color: var(--terracotta);
+  color: var(--ruby);
 }
 
 .lang-btn.active {
@@ -106,8 +106,6 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
 }
 
 /* ─── Card ───────────────────────────────────────────────────── */
@@ -128,7 +126,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--terracotta);
+  color: var(--ruby);
 }
 
 /* ─── Names ──────────────────────────────────────────────────── */
@@ -220,9 +218,9 @@ body {
 
 .cal-btn {
   background: transparent;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--ruby);
   border-radius: 3px;
-  color: var(--terracotta);
+  color: var(--ruby);
   cursor: pointer;
   font-family: var(--sans);
   font-size: 0.75rem;
@@ -236,13 +234,13 @@ body {
 
 .cal-btn:hover,
 .cal-btn:focus-visible {
-  background: var(--terracotta);
+  background: var(--ruby);
   color: var(--cream);
   outline: none;
 }
 
 .cal-btn:focus-visible {
-  box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px var(--terracotta);
+  box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px var(--ruby);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
