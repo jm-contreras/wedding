@@ -154,6 +154,13 @@ body {
   color: var(--charcoal);
 }
 
+.venue {
+  font-family: var(--serif);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-weight: 300;
+  color: var(--muted);
+}
+
 .location {
   font-family: var(--sans);
   font-size: 0.8rem;
