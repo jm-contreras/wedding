@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgan &amp; Juanma — Save the Date</title>
-  <meta name="description" content="Save the Date — Morgan &amp; Juanma, February 22, 2027, La Antigua, Guatemala." />
+  <title>Morgan &amp; Juanma — February 22, 2027</title>
+  <meta name="description" content="Morgan &amp; Juanma — February 22, 2027, La Antigua, Guatemala. Travel, schedule, and RSVP." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -13,66 +13,332 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="lang-toggle" aria-label="Language selection">
-      <button
-        class="lang-btn active"
-        id="btn-en"
-        lang="en"
-        aria-pressed="true"
-        onclick="setLang('en')"
-      >EN</button>
-      <span class="lang-divider" aria-hidden="true">|</span>
-      <button
-        class="lang-btn"
-        id="btn-es"
-        lang="es"
-        aria-pressed="false"
-        onclick="setLang('es')"
-      >ES</button>
+    <nav class="site-nav" aria-label="Section navigation">
+      <ul class="site-nav-list">
+        <li><a href="#home"     data-en="Home"     data-es="Inicio">Home</a></li>
+        <li><a href="#story"    data-en="Story"    data-es="Historia">Story</a></li>
+        <li><a href="#schedule" data-en="Schedule" data-es="Programa">Schedule</a></li>
+        <li><a href="#travel"   data-en="Travel"   data-es="Viaje">Travel</a></li>
+        <li><a href="#faq"      data-en="FAQ"      data-es="Preguntas">FAQ</a></li>
+        <li><a href="#rsvp"     data-en="RSVP"     data-es="Confirmar">RSVP</a></li>
+        <li><a href="#registry" data-en="Registry" data-es="Regalos">Registry</a></li>
+        <li><a href="#gallery"  data-en="Photos"   data-es="Fotos">Photos</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button
+          class="lang-btn active"
+          id="btn-en"
+          lang="en"
+          aria-pressed="true"
+          onclick="setLang('en')"
+        >EN</button>
+        <span class="lang-divider" aria-hidden="true">|</span>
+        <button
+          class="lang-btn"
+          id="btn-es"
+          lang="es"
+          aria-pressed="false"
+          onclick="setLang('es')"
+        >ES</button>
+      </div>
     </nav>
   </header>
 
   <main class="main">
-    <!-- Optional hero image: add src attribute to enable -->
-    <figure class="hero" id="hero" aria-hidden="true" hidden>
-      <img id="hero-img" src="" alt="Morgan and Juanma" />
-    </figure>
 
-    <section class="card" aria-label="Save the Date announcement">
+    <!-- ─── Hero / Save the Date ─────────────────────────────── -->
+    <section id="home" class="section section-hero" aria-label="Save the Date announcement">
+      <figure class="hero" id="hero" aria-hidden="true" hidden>
+        <img id="hero-img" src="" alt="Morgan and Juanma" />
+      </figure>
 
-      <p class="label" data-en="Save the Date" data-es="Reserva la Fecha">Save the Date</p>
+      <div class="card">
+        <p class="label" data-en="Save the Date" data-es="Reserva la Fecha">Save the Date</p>
 
-      <h1 class="names">Morgan &amp; Juanma</h1>
+        <h1 class="names">Morgan &amp; Juanma</h1>
 
-      <div class="details">
-        <p class="date" data-en="Monday, February 22, 2027" data-es="Lunes 22 de febrero de 2027">Monday, February 22, 2027</p>
-        <p class="venue" data-en="Ruins of the Convent of Santa Clara" data-es="Las Ruinas del Convento de Santa Clara">Ruins of the Convent of Santa Clara</p>
-        <p class="location">La Antigua, Guatemala</p>
+        <div class="details">
+          <p class="date" data-en="Monday, February 22, 2027" data-es="Lunes 22 de febrero de 2027">Monday, February 22, 2027</p>
+          <p class="venue" data-en="Ruins of the Convent of Santa Clara" data-es="Las Ruinas del Convento de Santa Clara">Ruins of the Convent of Santa Clara</p>
+          <p class="location">La Antigua, Guatemala</p>
+        </div>
+
+        <p class="countdown" id="countdown" aria-live="polite"></p>
+
+        <p class="tagline"
+          data-en="A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you."
+          data-es="Una semana de celebración en La Antigua — ruinas, volcanes y cuatro culturas entretejidas. No vemos la hora de compartirla contigo."
+        >
+          A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you.
+        </p>
+
+        <div class="calendar-buttons" role="group" aria-label="Add to calendar">
+          <button class="cal-btn" onclick="addToGoogle()">
+            <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
+          </button>
+          <button class="cal-btn" onclick="addToApple()">
+            <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
+          </button>
+          <button class="cal-btn" onclick="addToOutlook()">
+            <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Our Story ────────────────────────────────────────── -->
+    <section id="story" class="section" aria-labelledby="story-heading">
+      <h2 id="story-heading" class="section-heading" data-en="Our Story" data-es="Nuestra Historia">Our Story</h2>
+      <p class="story-text"
+        data-en="Juanma is Bolivian-American, born in New York and raised between La Paz and Maryland. Morgan is American, from Orlando. We met in Washington, DC. Music is the thread between us — Juanma plays bass, guitar, and piano; Morgan plays piano and DJs."
+        data-es="Juanma es boliviano-estadounidense, nacido en Nueva York y criado entre La Paz y Maryland. Morgan es estadounidense, de Orlando. Nos conocimos en Washington, DC. La música es el hilo que nos une — Juanma toca bajo, guitarra y piano; Morgan toca piano y es DJ."
+      >Juanma is Bolivian-American, born in New York and raised between La Paz and Maryland. Morgan is American, from Orlando. We met in Washington, DC. Music is the thread between us — Juanma plays bass, guitar, and piano; Morgan plays piano and DJs.</p>
+      <p class="story-text"
+        data-en="Our wedding week is a cultural bridge — American, Bolivian, Guatemalan, and Irish threads woven together intentionally. Family-first, music-driven, rooted in the place. We can't wait to share it with you."
+        data-es="Nuestra semana de boda es un puente cultural — hilos estadounidenses, bolivianos, guatemaltecos e irlandeses entretejidos con intención. Centrada en la familia, guiada por la música, arraigada en el lugar. No vemos la hora de compartirla contigo."
+      >Our wedding week is a cultural bridge — American, Bolivian, Guatemalan, and Irish threads woven together intentionally. Family-first, music-driven, rooted in the place. We can't wait to share it with you.</p>
+    </section>
+
+    <!-- ─── Schedule ─────────────────────────────────────────── -->
+    <section id="schedule" class="section" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading" class="section-heading" data-en="Schedule" data-es="Programa">Schedule</h2>
+      <p class="section-intro"
+        data-en="Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date."
+        data-es="Tres días de celebración en La Antigua. Las horas y los lugares se confirmarán más cerca de la fecha."
+      >Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date.</p>
+      <div id="schedule-list" class="schedule-list"></div>
+
+      <aside class="schedule-prologue">
+        <p class="schedule-prologue-label"
+          data-en="Optional prologue · February 18–20"
+          data-es="Prólogo opcional · 18–20 de febrero"
+        >Optional prologue · February 18–20</p>
+        <p class="schedule-prologue-text"
+          data-en="A few of us will be at Lake Atitlán in the days before the wedding. If you're traveling early, ask us — you're welcome to join."
+          data-es="Algunos estaremos en el Lago de Atitlán los días previos a la boda. Si viajas con tiempo, escríbenos — estás invitado a unirte."
+        >A few of us will be at Lake Atitlán in the days before the wedding. If you're traveling early, ask us — you're welcome to join.</p>
+      </aside>
+    </section>
+
+    <!-- ─── Travel ───────────────────────────────────────────── -->
+    <section id="travel" class="section section-wide" aria-labelledby="travel-heading">
+      <h2 id="travel-heading" class="section-heading" data-en="Travel" data-es="Viaje">Travel</h2>
+      <p class="section-intro"
+        data-en="A short guide to getting to La Antigua and making the most of your time in Guatemala. For first-time visitors, see our full travel guide for more detail."
+        data-es="Una breve guía para llegar a La Antigua y aprovechar tu tiempo en Guatemala. Si vienes por primera vez, consulta nuestra guía de viaje completa para más detalle."
+      >A short guide to getting to La Antigua and making the most of your time in Guatemala. For first-time visitors, see our full travel guide for more detail.</p>
+
+      <div class="travel-grid">
+
+        <article class="travel-block">
+          <h3 class="subhead" data-en="Getting to Guatemala" data-es="Cómo llegar a Guatemala">Getting to Guatemala</h3>
+          <p data-en="Fly into La Aurora International Airport (GUA) in Guatemala City. Direct flights run from Miami, Houston, Dallas, Atlanta, Los Angeles, New York, Madrid, and several Central American hubs."
+             data-es="Vuela al Aeropuerto Internacional La Aurora (GUA) en Ciudad de Guatemala. Hay vuelos directos desde Miami, Houston, Dallas, Atlanta, Los Ángeles, Nueva York, Madrid y varios destinos centroamericanos.">
+            Fly into La Aurora International Airport (GUA) in Guatemala City. Direct flights run from Miami, Houston, Dallas, Atlanta, Los Angeles, New York, Madrid, and several Central American hubs.
+          </p>
+        </article>
+
+        <article class="travel-block">
+          <h3 class="subhead" data-en="Airport to Antigua" data-es="Del aeropuerto a La Antigua">Airport to Antigua</h3>
+          <p data-en="Antigua is about a one-hour drive from GUA. Pre-booked shuttles are the easiest option (~$15–25 USD per person). Uber works at the airport. Private transfers can be arranged through your hotel."
+             data-es="La Antigua está a aproximadamente una hora en auto desde GUA. Los traslados reservados con anticipación son la opción más fácil (~$15–25 USD por persona). Uber funciona en el aeropuerto. Tu hotel también puede coordinar traslados privados.">
+            Antigua is about a one-hour drive from GUA. Pre-booked shuttles are the easiest option (~$15–25 USD per person). Uber works at the airport. Private transfers can be arranged through your hotel.
+          </p>
+        </article>
+
+        <article class="travel-block">
+          <h3 class="subhead" data-en="Where to Stay" data-es="Dónde hospedarse">Where to Stay</h3>
+          <p data-en="We're working on a hotel block in central Antigua, walking distance from Santa Clara. Booking details will go out with the formal invitation. In the meantime, central Antigua near Parque Central is the right neighborhood to look in."
+             data-es="Estamos coordinando un bloque de habitaciones en el centro de Antigua, a pocos minutos a pie de Santa Clara. Los detalles de reserva se enviarán con la invitación formal. Mientras tanto, el centro de Antigua, cerca del Parque Central, es la zona en la que conviene buscar.">
+            We're working on a hotel block in central Antigua, walking distance from Santa Clara. Booking details will go out with the formal invitation. In the meantime, central Antigua near Parque Central is the right neighborhood to look in.
+          </p>
+        </article>
+
+        <article class="travel-block">
+          <h3 class="subhead" data-en="Things to Do in Antigua" data-es="Qué hacer en La Antigua">Things to Do in Antigua</h3>
+          <p data-en="Wander cobblestone streets, climb Cerro de la Cruz for sunset views, tour a coffee finca, hike Pacaya or Acatenango volcanoes, and explore the colonial ruins scattered across the city."
+             data-es="Camina por las calles empedradas, sube al Cerro de la Cruz para ver el atardecer, visita una finca de café, escala los volcanes Pacaya o Acatenango y explora las ruinas coloniales por toda la ciudad.">
+            Wander cobblestone streets, climb Cerro de la Cruz for sunset views, tour a coffee finca, hike Pacaya or Acatenango volcanoes, and explore the colonial ruins scattered across the city.
+          </p>
+        </article>
+
+        <article class="travel-block">
+          <h3 class="subhead" data-en="Before or After the Wedding" data-es="Antes o después de la boda">Before or After the Wedding</h3>
+          <p data-en="Guatemala rewards extra days. Lake Atitlán (3 hours from Antigua), the Mayan ruins of Tikal (a short flight to Flores), the turquoise pools of Semuc Champey, and Pacific or Caribbean beaches are all within reach. We'll be at Lake Atitlán the weekend before the wedding and traveling casually for a few days after — if you're around, ask us, you're welcome to join."
+             data-es="Guatemala premia los días extra. El Lago de Atitlán (a 3 horas de Antigua), las ruinas mayas de Tikal (un vuelo corto a Flores), las pozas turquesas de Semuc Champey y las playas del Pacífico o del Caribe están al alcance. Estaremos en el Lago de Atitlán el fin de semana antes de la boda y viajaremos sin planes fijos unos días después — si estás por aquí, escríbenos, estás invitado a unirte.">
+            Guatemala rewards extra days. Lake Atitlán (3 hours from Antigua), the Mayan ruins of Tikal (a short flight to Flores), the turquoise pools of Semuc Champey, and Pacific or Caribbean beaches are all within reach. We'll be at Lake Atitlán the weekend before the wedding and traveling casually for a few days after — if you're around, ask us, you're welcome to join.
+          </p>
+        </article>
+
       </div>
 
-      <p class="countdown" id="countdown" aria-live="polite"></p>
+      <div class="travel-map">
+        <h3 class="subhead" data-en="Map of Venues" data-es="Mapa de Lugares">Map of Venues</h3>
+        <p class="map-note"
+          data-en="Pinned: ceremony, hotel blocks, recommended restaurants and cafés."
+          data-es="Marcados: ceremonia, hoteles, restaurantes y cafés recomendados."
+        >Pinned: ceremony, hotel blocks, recommended restaurants and cafés.</p>
+        <div class="map-frame">
+          <!-- Replace this src with your own Google My Maps embed URL -->
+          <iframe
+            title="Wedding venues in La Antigua, Guatemala"
+            src="https://www.google.com/maps?q=Convento+Santa+Clara+Antigua+Guatemala&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="map-link">
+          <a href="https://www.google.com/maps/search/?api=1&query=Convento+Santa+Clara+Antigua+Guatemala"
+             target="_blank" rel="noopener"
+             data-en="Open in Google Maps →"
+             data-es="Abrir en Google Maps →">Open in Google Maps →</a>
+        </p>
+      </div>
 
-      <p class="tagline"
-        data-en="We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow."
-        data-es="Celebraremos nuestra boda rodeados de ruinas, volcanes y las personas que más queremos. La invitación formal y los detalles de viaje vendrán pronto."
-      >
-        We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow.
+      <p class="travel-guide-link">
+        <a href="antigua.html"
+           data-en="Read the full Antigua &amp; Guatemala travel guide →"
+           data-es="Leer la guía completa de Antigua y Guatemala →">
+          Read the full Antigua &amp; Guatemala travel guide →
+        </a>
+      </p>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────────── -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="section-heading" data-en="FAQ" data-es="Preguntas Frecuentes">FAQ</h2>
+
+      <p class="section-intro"
+        data-en="Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide."
+        data-es="A continuación, preguntas específicas sobre la boda. Para preguntas prácticas sobre visitar Antigua y Guatemala — vuelos, dinero, comida, seguridad, qué empacar — consulta nuestra guía de viaje."
+      >Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide.</p>
+
+      <p class="faq-guide-link">
+        <a href="antigua.html"
+           data-en="Visiting Antigua &amp; Guatemala — full travel guide →"
+           data-es="Visitando Antigua y Guatemala — guía completa →">
+          Visiting Antigua &amp; Guatemala — full travel guide →
+        </a>
       </p>
 
-      <div class="calendar-buttons" role="group" aria-label="Add to calendar">
-        <button class="cal-btn" onclick="addToGoogle()">
-          <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
-        </button>
-        <button class="cal-btn" onclick="addToApple()">
-          <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
-        </button>
-        <button class="cal-btn" onclick="addToOutlook()">
-          <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
-        </button>
-      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-en="What's the dress code?" data-es="¿Cuál es el código de vestimenta?">What's the dress code?</summary>
+          <p data-en="Festive cocktail — think bohemian garden soirée. Elevated but relaxed; the most beautiful dinner party, not a black-tie event. Antigua's evenings cool down quickly, so bring a light wrap or jacket. Cobblestone streets are not heel-friendly. The welcome buffet and farewell brunch are casual."
+             data-es="Cóctel festivo — soirée bohemio en jardín. Elegante pero relajado; la cena más bonita, no un evento de etiqueta. Las noches en Antigua refrescan rápido, así que trae un chal o chaqueta ligera. Las calles empedradas no son amigas de los tacones. El buffet de bienvenida y el brunch de despedida son casuales.">
+            Festive cocktail — think bohemian garden soirée. Elevated but relaxed; the most beautiful dinner party, not a black-tie event. Antigua's evenings cool down quickly, so bring a light wrap or jacket. Cobblestone streets are not heel-friendly. The welcome buffet and farewell brunch are casual.
+          </p>
+        </details>
 
+        <details class="faq-item">
+          <summary data-en="What kind of ceremony is it?" data-es="¿Qué tipo de ceremonia será?">What kind of ceremony is it?</summary>
+          <p data-en="Spiritual, not religious. The ceremony is led by an aj'quij — a Mayan spiritual guide — with Aymara elements honoring Juanma's Bolivian heritage and a Celtic processional honoring Morgan's Irish lineage. Sacred but warm. A bilingual program will walk guests through the symbolism."
+             data-es="Espiritual, no religiosa. La ceremonia será oficiada por un aj'quij — un guía espiritual maya — con elementos aymaras que honran la herencia boliviana de Juanma y un cortejo celta que honra el linaje irlandés de Morgan. Sagrada pero cálida. Un programa bilingüe explicará el simbolismo a los invitados.">
+            Spiritual, not religious. The ceremony is led by an aj'quij — a Mayan spiritual guide — with Aymara elements honoring Juanma's Bolivian heritage and a Celtic processional honoring Morgan's Irish lineage. Sacred but warm. A bilingual program will walk guests through the symbolism.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="Will the wedding be bilingual?" data-es="¿La boda será bilingüe?">Will the wedding be bilingual?</summary>
+          <p data-en="Yes — the ceremony and key moments will weave together English and Spanish, so guests from both sides feel at home."
+             data-es="Sí — la ceremonia y los momentos clave combinarán inglés y español, para que los invitados de ambos lados se sientan en casa.">
+            Yes — the ceremony and key moments will weave together English and Spanish, so guests from both sides feel at home.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="Are kids welcome?" data-es="¿Pueden venir los niños?">Are kids welcome?</summary>
+          <p data-en="We're still working out the details — final guidance will go out with the formal invitation. The whole week is built around family, and we want loved ones to feel they can turn the trip into a family vacation if they wish."
+             data-es="Aún estamos definiendo los detalles — la información final se enviará con la invitación formal. La semana completa está pensada en torno a la familia, y queremos que nuestros seres queridos puedan convertir el viaje en unas vacaciones familiares si así lo desean.">
+            We're still working out the details — final guidance will go out with the formal invitation. The whole week is built around family, and we want loved ones to feel they can turn the trip into a family vacation if they wish.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="What about dietary restrictions?" data-es="¿Y las restricciones alimentarias?">What about dietary restrictions?</summary>
+          <p data-en="We'll ask about dietary needs on the RSVP form — vegetarian, vegan, gluten-free, and allergy options will all be accommodated."
+             data-es="Preguntaremos sobre necesidades alimentarias en el formulario de confirmación — se ofrecerán opciones vegetarianas, veganas, sin gluten y para alergias.">
+            We'll ask about dietary needs on the RSVP form — vegetarian, vegan, gluten-free, and allergy options will all be accommodated.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="I've never been to Guatemala. What should I know?" data-es="Nunca he ido a Guatemala. ¿Qué debo saber?">I've never been to Guatemala. What should I know?</summary>
+          <p data-en="We've put together a full travel guide covering flights, getting to Antigua, money, food, safety, packing, what to do, and where to go beyond Antigua — everything we wish someone had told us the first time."
+             data-es="Hemos creado una guía de viaje completa que cubre vuelos, cómo llegar a Antigua, dinero, comida, seguridad, qué empacar, qué hacer y a dónde ir más allá de Antigua — todo lo que nos hubiera gustado saber la primera vez.">
+            We've put together a full travel guide covering flights, getting to Antigua, money, food, safety, packing, what to do, and where to go beyond Antigua — everything we wish someone had told us the first time.
+          </p>
+          <p>
+            <a href="antigua.html" class="inline-link"
+               data-en="Open the travel guide →" data-es="Abrir la guía de viaje →">Open the travel guide →</a>
+          </p>
+        </details>
+      </div>
     </section>
+
+    <!-- ─── RSVP ─────────────────────────────────────────────── -->
+    <section id="rsvp" class="section" aria-labelledby="rsvp-heading">
+      <h2 id="rsvp-heading" class="section-heading" data-en="RSVP" data-es="Confirmar Asistencia">RSVP</h2>
+      <p class="section-intro"
+        data-en="We can't wait to celebrate with you. Please let us know whether you can join us by January 22, 2027."
+        data-es="No vemos la hora de celebrar contigo. Por favor confirma tu asistencia antes del 22 de enero de 2027."
+      >We can't wait to celebrate with you. Please let us know whether you can join us by January 22, 2027.</p>
+
+      <p class="rsvp-deadline"
+        data-en="Kindly respond by January 22, 2027"
+        data-es="Por favor responde antes del 22 de enero de 2027"
+      >Kindly respond by January 22, 2027</p>
+
+      <span class="cta-btn cta-btn-disabled" aria-disabled="true"
+         data-en="RSVP — Opens Soon" data-es="Confirmación — Próximamente">RSVP — Opens Soon</span>
+
+      <p class="rsvp-note"
+        data-en="The RSVP page will open closer to the date. Save the link with your formal invitation."
+        data-es="La página de confirmación se abrirá más cerca de la fecha. Guarda el enlace junto con tu invitación formal."
+      >The RSVP page will open closer to the date. Save the link with your formal invitation.</p>
+    </section>
+
+    <!-- ─── Registry ─────────────────────────────────────────── -->
+    <section id="registry" class="section" aria-labelledby="registry-heading">
+      <h2 id="registry-heading" class="section-heading" data-en="Registry" data-es="Mesa de Regalos">Registry</h2>
+      <p class="section-intro"
+        data-en="Your presence is the greatest gift. If you'd like to give something more, we've put together a small registry and a honeymoon fund."
+        data-es="Tu presencia es el mejor regalo. Si quieres darnos algo más, hemos creado una pequeña mesa de regalos y un fondo para nuestra luna de miel."
+      >Your presence is the greatest gift. If you'd like to give something more, we've put together a small registry and a honeymoon fund.</p>
+
+      <div class="registry-list">
+        <div class="registry-tile registry-tile-disabled" aria-disabled="true">
+          <span class="registry-name" data-en="Honeymoon Fund" data-es="Fondo de Luna de Miel">Honeymoon Fund</span>
+          <span class="registry-meta" data-en="Coming soon" data-es="Próximamente">Coming soon</span>
+        </div>
+        <div class="registry-tile registry-tile-disabled" aria-disabled="true">
+          <span class="registry-name">Amazon</span>
+          <span class="registry-meta" data-en="Coming soon" data-es="Próximamente">Coming soon</span>
+        </div>
+        <div class="registry-tile registry-tile-disabled" aria-disabled="true">
+          <span class="registry-name">Zola</span>
+          <span class="registry-meta" data-en="Coming soon" data-es="Próximamente">Coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Photo Gallery ────────────────────────────────────── -->
+    <section id="gallery" class="section section-wide" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="section-heading" data-en="Photos" data-es="Fotos">Photos</h2>
+      <p class="section-intro gallery-placeholder"
+        data-en="More photos coming after the wedding."
+        data-es="Más fotos después de la boda."
+      >More photos coming after the wedding.</p>
+    </section>
+
   </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">
+      <span data-en="With love, Morgan &amp; Juanma" data-es="Con cariño, Morgan y Juanma">With love, Morgan &amp; Juanma</span>
+    </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

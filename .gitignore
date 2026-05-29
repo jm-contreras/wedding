@@ -1,0 +1,6 @@
+# Internal-only material — never deploy to the public site
+docs/
+
+# OS / tooling
+.DS_Store
+.vercel/
