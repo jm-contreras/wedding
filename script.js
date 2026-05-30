@@ -280,7 +280,7 @@ function addToOutlook() { downloadICS(PRIMARY_EVENT); }
 /* ─── Optional Hero Image ────────────────────────────────────── */
 // To enable the hero photo, set HERO_SRC to the image path or URL.
 // Leave as empty string to hide it.
-const HERO_SRC = 'ProposalHydra0062.png';
+const HERO_SRC = 'ProposalHydra0062.jpg';
 
 (function initHero() {
   if (!HERO_SRC) return;
