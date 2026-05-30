@@ -4,3 +4,4 @@ docs/
 # OS / tooling
 .DS_Store
 .vercel/
+.vercel
