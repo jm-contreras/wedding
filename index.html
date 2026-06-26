@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgan &amp; Juanma — Save the Date</title>
-  <meta name="description" content="Save the Date — Morgan &amp; Juanma, February 22, 2027, La Antigua, Guatemala." />
+  <title>Morgan &amp; Juanma — February 22, 2027</title>
+  <meta name="description" content="Morgan &amp; Juanma — February 22, 2027, La Antigua, Guatemala. Travel, schedule, and RSVP." />
+
+  <!-- Open Graph / link previews (iMessage, WhatsApp, Slack, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Morgan &amp; Juanma" />
+  <meta property="og:title" content="Morgan &amp; Juanma — February 22, 2027" />
+  <meta property="og:description" content="We're getting married in La Antigua, Guatemala — a week of celebration among ruins and volcanoes, with four cultures woven together." />
+  <meta property="og:url" content="https://amorenruinas.com/" />
+  <meta property="og:image" content="https://amorenruinas.com/ProposalHydra0062.jpg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="Morgan and Juanma" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Morgan &amp; Juanma — February 22, 2027" />
+  <meta name="twitter:description" content="We're getting married in La Antigua, Guatemala — a week of celebration among ruins and volcanoes, with four cultures woven together." />
+  <meta name="twitter:image" content="https://amorenruinas.com/ProposalHydra0062.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -13,66 +28,204 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="lang-toggle" aria-label="Language selection">
-      <button
-        class="lang-btn active"
-        id="btn-en"
-        lang="en"
-        aria-pressed="true"
-        onclick="setLang('en')"
-      >EN</button>
-      <span class="lang-divider" aria-hidden="true">|</span>
-      <button
-        class="lang-btn"
-        id="btn-es"
-        lang="es"
-        aria-pressed="false"
-        onclick="setLang('es')"
-      >ES</button>
+    <nav class="site-nav" aria-label="Section navigation">
+      <ul class="site-nav-list">
+        <li><a href="#home"     data-en="Home"     data-es="Inicio">Home</a></li>
+        <li><a href="#story"    data-en="About"    data-es="Nosotros">About</a></li>
+        <li><a href="#schedule" data-en="Schedule" data-es="Programa">Schedule</a></li>
+        <li><a href="antigua.html" data-en="Travel" data-es="Viaje">Travel</a></li>
+        <li><a href="#faq"      data-en="FAQ"      data-es="Preguntas">FAQ</a></li>
+        <li><a href="#rsvp"     data-en="RSVP"     data-es="Confirmar">RSVP</a></li>
+        <li><a href="#registry" data-en="Registry" data-es="Regalos">Registry</a></li>
+        <li><a href="#gallery"  data-en="Photos"   data-es="Fotos">Photos</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button
+          class="lang-btn active"
+          id="btn-en"
+          lang="en"
+          aria-pressed="true"
+          onclick="setLang('en')"
+        >EN</button>
+        <span class="lang-divider" aria-hidden="true">|</span>
+        <button
+          class="lang-btn"
+          id="btn-es"
+          lang="es"
+          aria-pressed="false"
+          onclick="setLang('es')"
+        >ES</button>
+      </div>
     </nav>
   </header>
 
   <main class="main">
-    <!-- Optional hero image: add src attribute to enable -->
-    <figure class="hero" id="hero" aria-hidden="true" hidden>
-      <img id="hero-img" src="" alt="Morgan and Juanma" />
-    </figure>
 
-    <section class="card" aria-label="Save the Date announcement">
+    <!-- ─── Hero ─────────────────────────────────────────────── -->
+    <section id="home" class="section section-hero" aria-label="Morgan and Juanma wedding announcement">
+      <figure class="hero" id="hero" aria-hidden="true" hidden>
+        <img id="hero-img" src="" alt="Morgan and Juanma" />
+      </figure>
 
-      <p class="label" data-en="Save the Date" data-es="Reserva la Fecha">Save the Date</p>
+      <div class="card">
+        <h1 class="names">Morgan &amp; Juanma</h1>
 
-      <h1 class="names">Morgan &amp; Juanma</h1>
+        <div class="details">
+          <p class="date" data-en="Monday, February 22, 2027" data-es="Lunes 22 de febrero de 2027">Monday, February 22, 2027</p>
+          <p class="venue" data-en="Ruins of the Convent of Santa Clara" data-es="Las Ruinas del Convento de Santa Clara">Ruins of the Convent of Santa Clara</p>
+          <p class="location">La Antigua, Guatemala</p>
+        </div>
 
-      <div class="details">
-        <p class="date" data-en="Monday, February 22, 2027" data-es="Lunes 22 de febrero de 2027">Monday, February 22, 2027</p>
-        <p class="venue" data-en="Ruins of the Convent of Santa Clara" data-es="Las Ruinas del Convento de Santa Clara">Ruins of the Convent of Santa Clara</p>
-        <p class="location">La Antigua, Guatemala</p>
+        <p class="countdown" id="countdown" aria-live="polite"></p>
+
+        <p class="tagline"
+          data-en="A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you."
+          data-es="Una semana de celebración en La Antigua — ruinas, volcanes y cuatro culturas entretejidas. No vemos la hora de compartirla contigo."
+        >
+          A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you.
+        </p>
+
+        <div class="calendar-buttons" role="group" aria-label="Add to calendar">
+          <button class="cal-btn" onclick="addToGoogle()">
+            <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
+          </button>
+          <button class="cal-btn" onclick="addToApple()">
+            <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
+          </button>
+          <button class="cal-btn" onclick="addToOutlook()">
+            <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
+          </button>
+        </div>
       </div>
+    </section>
 
-      <p class="countdown" id="countdown" aria-live="polite"></p>
+    <!-- ─── About Amor en Ruinas ─────────────────────────────── -->
+    <section id="story" class="section" aria-labelledby="story-heading">
+      <h2 id="story-heading" class="section-heading" data-en="About Amor en Ruinas" data-es="Sobre Amor en Ruinas">About Amor en Ruinas</h2>
+      <p class="story-text"
+        data-en="Ruins remind us that nothing lasts forever and that what's worth holding onto is the people we choose to keep close. Before we begin our life together, we want to pause, among these centuries-old walls, to honor our love for each other and for everyone who shaped us."
+        data-es="Las ruinas nos recuerdan que nada dura para siempre y que lo que vale la pena conservar son las personas que elegimos mantener cerca. Antes de comenzar nuestra vida juntos, queremos detenernos, entre estos muros centenarios, para honrar nuestro amor mutuo y el de todos quienes nos formaron."
+      >Ruins remind us that nothing lasts forever and that what's worth holding onto is the people we choose to keep close. Before we begin our life together, we want to pause, among these centuries-old walls, to honor our love for each other and for everyone who shaped us.</p>
+      <p class="story-text"
+        data-en="Our story lives somewhere between Bolivia and the United States. At the ruins of Santa Clara in Antigua, we'll gather to celebrate that we met, that we fell in love, and that we've decided to spend the rest of our lives together."
+        data-es="Nuestra historia vive en algún lugar entre Bolivia y Estados Unidos. En las Ruinas de Santa Clara, en La Antigua, nos reuniremos para celebrar que nos conocimos, que nos enamoramos y que hemos decidido pasar el resto de nuestras vidas juntos."
+      >Our story lives somewhere between Bolivia and the United States. At the ruins of Santa Clara in Antigua, we'll gather to celebrate that we met, that we fell in love, and that we've decided to spend the rest of our lives together.</p>
+    </section>
 
-      <p class="tagline"
-        data-en="We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow."
-        data-es="Celebraremos nuestra boda rodeados de ruinas, volcanes y las personas que más queremos. La invitación formal y los detalles de viaje vendrán pronto."
-      >
-        We're celebrating our wedding surrounded by ruins, volcanoes, and the people we love most. Formal invitation and travel details to follow.
+    <!-- ─── Schedule ─────────────────────────────────────────── -->
+    <section id="schedule" class="section" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading" class="section-heading" data-en="Schedule" data-es="Programa">Schedule</h2>
+      <p class="section-intro"
+        data-en="Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date."
+        data-es="Tres días de celebración en La Antigua. Las horas y los lugares se confirmarán más cerca de la fecha."
+      >Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date.</p>
+      <div id="schedule-list" class="schedule-list"></div>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────────── -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="section-heading" data-en="FAQ" data-es="Preguntas Frecuentes">FAQ</h2>
+
+      <p class="section-intro"
+        data-en="Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide."
+        data-es="A continuación, preguntas específicas sobre la boda. Para preguntas prácticas sobre visitar Antigua y Guatemala — vuelos, dinero, comida, seguridad, qué empacar — consulta nuestra guía de viaje."
+      >Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide.</p>
+
+      <p class="faq-guide-link">
+        <a href="antigua.html"
+           data-en="Visiting Antigua &amp; Guatemala — full travel guide →"
+           data-es="Visitando Antigua y Guatemala — guía completa →">
+          Visiting Antigua &amp; Guatemala — full travel guide →
+        </a>
       </p>
 
-      <div class="calendar-buttons" role="group" aria-label="Add to calendar">
-        <button class="cal-btn" onclick="addToGoogle()">
-          <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
-        </button>
-        <button class="cal-btn" onclick="addToApple()">
-          <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
-        </button>
-        <button class="cal-btn" onclick="addToOutlook()">
-          <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
-        </button>
-      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary data-en="What's the dress code?" data-es="¿Cuál es el código de vestimenta?">What's the dress code?</summary>
+          <p data-en="Dressy but relaxed — no suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome buffet and farewell brunch are casual."
+             data-es="Elegante pero relajado — no hace falta traje, corbata, esmoquin ni vestido largo. Para que te hagas una idea: los hombres pueden usar una camisa de botones o de lino con pantalón, o un saco ligero; las mujeres un vestido veraniego, un vestido de coctel, o una blusa bonita con falda. Piensa en una linda cena de jardín. Los tonos tierra y los estampados florales van bien con el lugar. Las calles son empedradas, así que usa zapatos cómodos para caminar — deja los tacones de aguja en casa. Las noches en Antigua refrescan, así que trae una chaqueta o un chal ligero. El buffet de bienvenida y el brunch de despedida son casuales.">
+            Dressy but relaxed — no suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome buffet and farewell brunch are casual.
+          </p>
+        </details>
 
+        <details class="faq-item">
+          <summary data-en="Will the wedding be in English?" data-es="¿La boda será en español?">Will the wedding be in English?</summary>
+          <p data-en="Yes. The ceremony and all the key moments will be in English (and Spanish too), so you'll be able to follow everything. A bilingual program will guide you through the day."
+             data-es="Sí. La ceremonia y todos los momentos clave serán en español (y también en inglés), para que puedas seguir todo. Un programa bilingüe te guiará durante el día.">
+            Yes. The ceremony and all the key moments will be in English (and Spanish too), so you'll be able to follow everything. A bilingual program will guide you through the day.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="Are kids welcome?" data-es="¿Pueden venir los niños?">Are kids welcome?</summary>
+          <p data-en="To let everyone relax and enjoy the celebration, the wedding is adults-only, with the exception of immediate family. We hope this gives parents a chance to enjoy a night out — thank you for understanding."
+             data-es="Para que todos puedan relajarse y disfrutar la celebración, la boda es solo para adultos, con excepción de la familia inmediata. Esperamos que esto les dé a los padres la oportunidad de disfrutar una noche libre — gracias por su comprensión.">
+            To let everyone relax and enjoy the celebration, the wedding is adults-only, with the exception of immediate family. We hope this gives parents a chance to enjoy a night out — thank you for understanding.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary data-en="I've never been to Guatemala. What should I know?" data-es="Nunca he ido a Guatemala. ¿Qué debo saber?">I've never been to Guatemala. What should I know?</summary>
+          <p data-en="We've put together a full travel guide covering flights, getting to Antigua, money, food, safety, packing, what to do, and where to go beyond Antigua — everything we wish someone had told us the first time."
+             data-es="Hemos creado una guía de viaje completa que cubre vuelos, cómo llegar a Antigua, dinero, comida, seguridad, qué empacar, qué hacer y a dónde ir más allá de Antigua — todo lo que nos hubiera gustado saber la primera vez.">
+            We've put together a full travel guide covering flights, getting to Antigua, money, food, safety, packing, what to do, and where to go beyond Antigua — everything we wish someone had told us the first time.
+          </p>
+          <p>
+            <a href="antigua.html" class="inline-link"
+               data-en="Open the travel guide →" data-es="Abrir la guía de viaje →">Open the travel guide →</a>
+          </p>
+        </details>
+      </div>
     </section>
+
+    <!-- ─── RSVP ─────────────────────────────────────────────── -->
+    <section id="rsvp" class="section" aria-labelledby="rsvp-heading">
+      <h2 id="rsvp-heading" class="section-heading" data-en="RSVP" data-es="Confirmar Asistencia">RSVP</h2>
+      <p class="section-intro"
+        data-en="We can't wait to celebrate with you. Please let us know whether you can join us by December 1, 2026."
+        data-es="No vemos la hora de celebrar contigo. Por favor confirma tu asistencia antes del 1 de diciembre de 2026."
+      >We can't wait to celebrate with you. Please let us know whether you can join us by December 1, 2026.</p>
+
+      <p class="rsvp-deadline"
+        data-en="Kindly respond by December 1, 2026"
+        data-es="Por favor responde antes del 1 de diciembre de 2026"
+      >Kindly respond by December 1, 2026</p>
+
+      <a class="cta-btn" href="https://amorenruinas.thatstheone.com/rsvp/contact"
+         target="_blank" rel="noopener"
+         data-en="RSVP" data-es="Confirmar Asistencia">RSVP</a>
+
+      <p class="rsvp-note"
+        data-en="The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help."
+        data-es="El enlace abre nuestro formulario de confirmación. ¿Algún problema? Responde a tu invitación y te ayudamos."
+      >The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help.</p>
+    </section>
+
+    <!-- ─── Registry ─────────────────────────────────────────── -->
+    <section id="registry" class="section" aria-labelledby="registry-heading">
+      <h2 id="registry-heading" class="section-heading" data-en="Registry" data-es="Mesa de Regalos">Registry</h2>
+      <p class="section-intro"
+        data-en="Your presence is the greatest gift. If you'd like to give something more, registry details are still to be decided — we'll share them here closer to the date."
+        data-es="Tu presencia es el mejor regalo. Si deseas darnos algo más, los detalles de la mesa de regalos están aún por definir — los compartiremos aquí más cerca de la fecha."
+      >Your presence is the greatest gift. If you'd like to give something more, registry details are still to be decided — we'll share them here closer to the date.</p>
+    </section>
+
+    <!-- ─── Photo Gallery ────────────────────────────────────── -->
+    <section id="gallery" class="section section-wide" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="section-heading" data-en="Photos" data-es="Fotos">Photos</h2>
+      <p class="section-intro gallery-placeholder"
+        data-en="More photos coming after the wedding."
+        data-es="Más fotos después de la boda."
+      >More photos coming after the wedding.</p>
+    </section>
+
   </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">
+      <span data-en="With love, Morgan &amp; Juanma" data-es="Con cariño, Morgan y Juanma">With love, Morgan &amp; Juanma</span>
+    </p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

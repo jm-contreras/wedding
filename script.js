@@ -5,9 +5,13 @@ let currentLang = 'en';
 function setLang(lang) {
   currentLang = lang;
 
-  // Update all translated elements
+  // Update all translated elements. Some data-* values contain inline
+  // markup (<strong>, <em>), so use innerHTML when markup is present.
+  // Content is static and author-controlled — no injection risk.
   document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.dataset[lang] || el.dataset.en;
+    const val = el.dataset[lang] || el.dataset.en;
+    if (val.includes('<')) el.innerHTML = val;
+    else el.textContent = val;
   });
 
   // Update button states
@@ -33,49 +37,111 @@ function setLang(lang) {
   }
 })();
 
+/* ─── Events Data Model ───────────────────────────────────────── */
+
+const EVENTS = [
+  {
+    id: 'welcome',
+    date: '20270221',
+    dateEnd: '20270222',
+    title_en: 'The Encounter',
+    title_es: 'El Encuentro',
+    subtitle_en: 'Welcome Buffet',
+    subtitle_es: 'Buffet de Bienvenida',
+    time_en: 'Evening',
+    time_es: 'Por la noche',
+    location_en: 'La Antigua — venue to be announced',
+    location_es: 'La Antigua — lugar por anunciar',
+    attire_en: 'Casual',
+    attire_es: 'Casual',
+    description_en: 'A relaxed buffet to welcome everyone arriving from afar.',
+    description_es: 'Un buffet relajado para dar la bienvenida a quienes llegan desde lejos.',
+  },
+  {
+    id: 'wedding',
+    date: '20270222',
+    dateEnd: '20270223',
+    title_en: 'By Fire',
+    title_es: 'Por Fuego',
+    subtitle_en: 'Ceremony, Dinner & Dancing',
+    subtitle_es: 'Ceremonia, Cena y Baile',
+    time_en: 'Afternoon into the night',
+    time_es: 'Desde la tarde hasta la noche',
+    location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
+    location_es: 'Las Ruinas del Convento de Santa Clara, La Antigua',
+    attire_en: 'Dressy but relaxed — garden party',
+    attire_es: 'Elegante pero relajado — fiesta de jardín',
+    description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
+    description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
+    isPrimary: true,
+  },
+  {
+    id: 'brunch',
+    date: '20270223',
+    dateEnd: '20270224',
+    title_en: 'The Beginning',
+    title_es: 'El Principio',
+    subtitle_en: 'Farewell Brunch',
+    subtitle_es: 'Brunch de Despedida',
+    time_en: 'Late morning',
+    time_es: 'Por la mañana',
+    location_en: 'La Antigua — venue to be announced',
+    location_es: 'La Antigua — lugar por anunciar',
+    attire_en: 'Casual',
+    attire_es: 'Casual',
+    description_en: 'Coffee, a traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
+    description_es: 'Café, desayuno guatemalteco tradicional y despedidas antes de que todos regresen a casa.',
+  },
+];
+
+const PRIMARY_EVENT = EVENTS.find(e => e.isPrimary) || EVENTS[0];
+
+function fmtDate(yyyymmdd, lang) {
+  const y = +yyyymmdd.slice(0, 4);
+  const m = +yyyymmdd.slice(4, 6) - 1;
+  const d = +yyyymmdd.slice(6, 8);
+  return new Date(y, m, d).toLocaleDateString(
+    lang === 'es' ? 'es-ES' : 'en-US',
+    { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }
+  );
+}
+
 /* ─── Countdown ───────────────────────────────────────────────── */
 
 (function initCountdown() {
-  const wedding = new Date('2027-02-22T00:00:00');
   const el = document.getElementById('countdown');
+  if (!el) return;
 
-  function render() {
-    const now = new Date();
-    // Compare calendar dates only (ignore time-of-day)
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const target = new Date(wedding.getFullYear(), wedding.getMonth(), wedding.getDate());
-    const diff = Math.round((target - today) / 86400000);
+  const y = +PRIMARY_EVENT.date.slice(0, 4);
+  const m = +PRIMARY_EVENT.date.slice(4, 6) - 1;
+  const d = +PRIMARY_EVENT.date.slice(6, 8);
+  const wedding = new Date(y, m, d);
 
-    if (diff < 0) {
-      // Wedding has passed — hide the element entirely
-      el.hidden = true;
-    } else if (diff === 0) {
-      el.dataset.en = 'Today';
-      el.dataset.es = 'Hoy';
-      el.textContent = currentLang === 'es' ? 'Hoy' : 'Today';
-    } else {
-      const enText = diff === 1 ? '1 day away' : `${diff} days away`;
-      const esText = diff === 1 ? 'falta 1 día' : `faltan ${diff} días`;
-      el.dataset.en = enText;
-      el.dataset.es = esText;
-      el.textContent = currentLang === 'es' ? esText : enText;
-    }
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const diff = Math.round((wedding - today) / 86400000);
+
+  if (diff < 0) {
+    el.hidden = true;
+  } else if (diff === 0) {
+    el.dataset.en = 'Today';
+    el.dataset.es = 'Hoy';
+    el.textContent = currentLang === 'es' ? 'Hoy' : 'Today';
+  } else {
+    const enText = diff === 1 ? '1 day away' : `${diff} days away`;
+    const esText = diff === 1 ? 'falta 1 día' : `faltan ${diff} días`;
+    el.dataset.en = enText;
+    el.dataset.es = esText;
+    el.textContent = currentLang === 'es' ? esText : enText;
   }
-
-  render();
 })();
 
 /* ─── Calendar Helpers ────────────────────────────────────────── */
 
-const EVENT = {
-  title:    "Morgan & Juanma's Wedding",
-  date:     '20270222',          // YYYYMMDD (all-day)
-  dateEnd:  '20270223',          // exclusive end for all-day ICS events
-  location: 'Convento Santa Clara, 2nd Avenue North and 2nd Street East, Antigua, Antigua Guatemala, Guatemala',
-  description: 'Formal invitation and details to follow.',
-};
-
-function buildICS() {
+function buildICS(evt) {
+  const title = evt.isPrimary
+    ? "Morgan & Juanma's Wedding"
+    : `Morgan & Juanma — ${evt.title_en}`;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -83,55 +149,138 @@ function buildICS() {
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `DTSTART;VALUE=DATE:${EVENT.date}`,
-    `DTEND;VALUE=DATE:${EVENT.dateEnd}`,
-    `SUMMARY:${EVENT.title}`,
-    `LOCATION:${EVENT.location}`,
-    `DESCRIPTION:${EVENT.description}`,
+    `UID:${evt.id}-morgan-juanma@wedding`,
+    `DTSTART;VALUE=DATE:${evt.date}`,
+    `DTEND;VALUE=DATE:${evt.dateEnd}`,
+    `SUMMARY:${title}`,
+    `LOCATION:${evt.location_en}`,
+    `DESCRIPTION:${evt.description_en}`,
     'END:VEVENT',
     'END:VCALENDAR',
   ];
   return lines.join('\r\n');
 }
 
-function downloadICS(filename) {
-  const ics = buildICS();
+function downloadICS(evt) {
+  const ics = buildICS(evt);
   const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = filename;
+  a.download = `morgan-juanma-${evt.id}.ics`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
 
-function addToGoogle() {
+function googleUrl(evt) {
+  const title = evt.isPrimary
+    ? "Morgan & Juanma's Wedding"
+    : `Morgan & Juanma — ${evt.title_en}`;
   const params = new URLSearchParams({
     action:   'TEMPLATE',
-    text:     EVENT.title,
-    dates:    `${EVENT.date}/${EVENT.dateEnd}`,
-    location: EVENT.location,
-    details:  EVENT.description,
+    text:     title,
+    dates:    `${evt.date}/${evt.dateEnd}`,
+    location: evt.location_en,
+    details:  evt.description_en,
     sf:       'true',
     output:   'xml',
   });
-  window.open(`https://calendar.google.com/calendar/r/eventedit?${params}`, '_blank', 'noopener');
+  return `https://calendar.google.com/calendar/r/eventedit?${params}`;
 }
 
-function addToApple() {
-  downloadICS('morgan-juanma-wedding.ics');
-}
+// Hero buttons (primary event)
+function addToGoogle()  { window.open(googleUrl(PRIMARY_EVENT), '_blank', 'noopener'); }
+function addToApple()   { downloadICS(PRIMARY_EVENT); }
+function addToOutlook() { downloadICS(PRIMARY_EVENT); }
 
-function addToOutlook() {
-  downloadICS('morgan-juanma-wedding.ics');
-}
+/* ─── Schedule Rendering ──────────────────────────────────────── */
+
+(function renderSchedule() {
+  const list = document.getElementById('schedule-list');
+  if (!list) return;
+
+  list.innerHTML = EVENTS.map(evt => `
+    <article class="schedule-item">
+      <div class="schedule-date">
+        <span data-en="${fmtDate(evt.date, 'en')}" data-es="${fmtDate(evt.date, 'es')}">${fmtDate(evt.date, 'en')}</span>
+      </div>
+      <h3 class="schedule-title">
+        <span data-en="${evt.title_en}" data-es="${evt.title_es}">${evt.title_en}</span>
+      </h3>
+      <p class="schedule-subtitle">
+        <span data-en="${evt.subtitle_en}" data-es="${evt.subtitle_es}">${evt.subtitle_en}</span>
+      </p>
+      <p class="schedule-meta">
+        <span data-en="${evt.time_en}" data-es="${evt.time_es}">${evt.time_en}</span>
+        <span class="schedule-sep" aria-hidden="true">·</span>
+        <span data-en="${evt.attire_en}" data-es="${evt.attire_es}">${evt.attire_en}</span>
+      </p>
+      <p class="schedule-location">
+        <span data-en="${evt.location_en}" data-es="${evt.location_es}">${evt.location_en}</span>
+      </p>
+      <p class="schedule-description">
+        <span data-en="${evt.description_en}" data-es="${evt.description_es}">${evt.description_en}</span>
+      </p>
+      <div class="schedule-actions">
+        <a class="cal-link" href="${googleUrl(evt)}" target="_blank" rel="noopener">
+          <span data-en="Google" data-es="Google">Google</span>
+        </a>
+        <button class="cal-link" type="button" data-event-id="${evt.id}">
+          <span data-en="Apple / Outlook" data-es="Apple / Outlook">Apple / Outlook</span>
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  list.querySelectorAll('button[data-event-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const evt = EVENTS.find(e => e.id === btn.dataset.eventId);
+      if (evt) downloadICS(evt);
+    });
+  });
+
+  // Re-apply current language to freshly rendered nodes
+  if (typeof setLang === 'function') setLang(currentLang);
+})();
+
+/* ─── Nav Scroll-Spy ─────────────────────────────────────────── */
+
+(function initScrollSpy() {
+  const links = document.querySelectorAll('.site-nav-list a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const linkById = new Map();
+  links.forEach(a => linkById.set(a.getAttribute('href').slice(1), a));
+
+  const sections = Array.from(linkById.keys())
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach(a => a.removeAttribute('aria-current'));
+    const a = linkById.get(id);
+    if (a) a.setAttribute('aria-current', 'true');
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible[0]) setActive(visible[0].target.id);
+  }, {
+    rootMargin: '-40% 0px -50% 0px',
+    threshold: [0, 0.25, 0.5, 1],
+  });
+
+  sections.forEach(s => observer.observe(s));
+})();
 
 /* ─── Optional Hero Image ────────────────────────────────────── */
 // To enable the hero photo, set HERO_SRC to the image path or URL.
 // Leave as empty string to hide it.
-const HERO_SRC = 'ProposalHydra0062.png';
+const HERO_SRC = 'ProposalHydra0062.jpg';
 
 (function initHero() {
   if (!HERO_SRC) return;
