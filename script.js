@@ -46,16 +46,16 @@ const EVENTS = [
     dateEnd: '20270222',
     title_en: 'The Encounter',
     title_es: 'El Encuentro',
-    subtitle_en: 'Welcome Buffet',
-    subtitle_es: 'Buffet de Bienvenida',
+    subtitle_en: 'Welcome Cocktail',
+    subtitle_es: 'Cóctel de Bienvenida',
     time_en: 'Evening',
     time_es: 'Por la noche',
     location_en: 'La Antigua — venue to be announced',
     location_es: 'La Antigua — lugar por anunciar',
-    attire_en: 'Casual',
-    attire_es: 'Casual',
-    description_en: 'A relaxed buffet to welcome everyone arriving from afar.',
-    description_es: 'Un buffet relajado para dar la bienvenida a quienes llegan desde lejos.',
+    attire_en: 'Garden casual',
+    attire_es: 'Casual de jardín',
+    description_en: 'A relaxed cocktail to welcome everyone arriving from afar.',
+    description_es: 'Un cóctel relajado para dar la bienvenida a quienes llegan desde lejos.',
   },
   {
     id: 'wedding',
@@ -69,8 +69,8 @@ const EVENTS = [
     time_es: 'Desde la tarde hasta la noche',
     location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
     location_es: 'Las Ruinas del Convento de Santa Clara, La Antigua',
-    attire_en: 'Dressy but relaxed — garden party',
-    attire_es: 'Elegante pero relajado — fiesta de jardín',
+    attire_en: 'Garden cocktail — dressy but relaxed',
+    attire_es: 'Cóctel de jardín — elegante pero relajado',
     description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
     description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
@@ -83,12 +83,12 @@ const EVENTS = [
     title_es: 'El Principio',
     subtitle_en: 'Farewell Brunch',
     subtitle_es: 'Brunch de Despedida',
-    time_en: 'Late morning',
-    time_es: 'Por la mañana',
+    time_en: 'Early afternoon',
+    time_es: 'Primera hora de la tarde',
     location_en: 'La Antigua — venue to be announced',
     location_es: 'La Antigua — lugar por anunciar',
-    attire_en: 'Casual',
-    attire_es: 'Casual',
+    attire_en: 'Garden casual',
+    attire_es: 'Casual de jardín',
     description_en: 'Coffee, a traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
     description_es: 'Café, desayuno guatemalteco tradicional y despedidas antes de que todos regresen a casa.',
   },
@@ -189,11 +189,6 @@ function googleUrl(evt) {
   });
   return `https://calendar.google.com/calendar/r/eventedit?${params}`;
 }
-
-// Hero buttons (primary event)
-function addToGoogle()  { window.open(googleUrl(PRIMARY_EVENT), '_blank', 'noopener'); }
-function addToApple()   { downloadICS(PRIMARY_EVENT); }
-function addToOutlook() { downloadICS(PRIMARY_EVENT); }
 
 /* ─── Schedule Rendering ──────────────────────────────────────── */
 
