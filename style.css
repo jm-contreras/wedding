@@ -574,6 +574,12 @@ body {
 
 .faq-guide-link { margin-top: 1.5rem; margin-bottom: 1rem; }
 
+.faq-guide-btn {
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0 2rem;
+}
+
 .travel-guide-link a,
 .faq-guide-link a,
 .inline-link {
@@ -692,6 +698,18 @@ body {
 
 .cta-btn:focus-visible {
   box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px var(--ruby);
+}
+
+/* Outline / secondary variant — same shape, subordinate to the solid CTA */
+.cta-btn-outline {
+  background: transparent;
+  color: var(--ruby);
+}
+
+.cta-btn-outline:hover,
+.cta-btn-outline:focus-visible {
+  background: var(--ruby);
+  color: var(--cream);
 }
 
 /* Placeholder (not-yet-live) state for buttons and registry tiles */
@@ -869,6 +887,23 @@ body {
 
 .guide-block p + p { margin-top: 0.75rem; }
 
+/* Inline source links within the travel guide */
+.guide-block a,
+.guide-list a {
+  color: var(--ruby);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 31, 34, 0.4);
+  transition: border-color 0.2s;
+}
+
+.guide-block a:hover,
+.guide-block a:focus-visible,
+.guide-list a:hover,
+.guide-list a:focus-visible {
+  border-bottom-color: var(--ruby);
+  outline: none;
+}
+
 .guide-list {
   list-style: none;
   margin-top: 0.75rem;
@@ -876,6 +911,8 @@ body {
   flex-direction: column;
   gap: 0.75rem;
 }
+
+.guide-list + p { margin-top: 0.75rem; }
 
 .guide-list li {
   position: relative;
