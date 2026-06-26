@@ -141,7 +141,7 @@ function fmtDate(yyyymmdd, lang) {
 function buildICS(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma — ${evt.title_en}`;
+    : `Morgan & Juanma — ${evt.title_en} (${evt.subtitle_en})`;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -177,7 +177,7 @@ function downloadICS(evt) {
 function googleUrl(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma — ${evt.title_en}`;
+    : `Morgan & Juanma — ${evt.title_en} (${evt.subtitle_en})`;
   const params = new URLSearchParams({
     action:   'TEMPLATE',
     text:     title,
