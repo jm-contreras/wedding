@@ -54,8 +54,8 @@ const EVENTS = [
     location_es: 'La Antigua — lugar por anunciar',
     attire_en: 'Casual',
     attire_es: 'Casual',
-    description_en: 'A relaxed buffet to welcome family and friends arriving from afar. The first time everyone is in the same room.',
-    description_es: 'Un buffet relajado para dar la bienvenida a familiares y amigos que viajan desde lejos. La primera vez que todos estamos en el mismo lugar.',
+    description_en: 'A relaxed buffet to welcome everyone arriving from afar.',
+    description_es: 'Un buffet relajado para dar la bienvenida a quienes llegan desde lejos.',
   },
   {
     id: 'wedding',
@@ -69,10 +69,10 @@ const EVENTS = [
     time_es: 'Desde la tarde hasta la noche',
     location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
     location_es: 'Las Ruinas del Convento de Santa Clara, La Antigua',
-    attire_en: 'Festive cocktail — bohemian garden soirée',
-    attire_es: 'Cóctel festivo — soirée bohemio en jardín',
-    description_en: 'A spiritual ceremony at the Santa Clara ruins with a Mayan aj\'quij and Aymara elements, followed by cocktails, a long-table dinner, and dancing late into the night.',
-    description_es: 'Una ceremonia espiritual en las Ruinas de Santa Clara, oficiada por un aj\'quij maya con elementos aymaras, seguida de cóctel, cena en mesas largas y baile hasta entrada la noche.',
+    attire_en: 'Dressy but relaxed — garden party',
+    attire_es: 'Elegante pero relajado — fiesta de jardín',
+    description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
+    description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
   },
   {
@@ -89,8 +89,8 @@ const EVENTS = [
     location_es: 'La Antigua — lugar por anunciar',
     attire_en: 'Casual',
     attire_es: 'Casual',
-    description_en: 'A relaxed send-off — coffee, traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
-    description_es: 'Una despedida tranquila — café, desayuno guatemalteco tradicional y abrazos antes de que todos regresen a casa.',
+    description_en: 'Coffee, a traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
+    description_es: 'Café, desayuno guatemalteco tradicional y despedidas antes de que todos regresen a casa.',
   },
 ];
 

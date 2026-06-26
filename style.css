@@ -214,46 +214,25 @@ body {
 }
 
 /* ─── Schedule ───────────────────────────────────────────────── */
-.schedule-prologue {
-  width: 100%;
-  max-width: 42ch;
-  margin-top: 2.5rem;
-  padding: 1.25rem 1.5rem;
-  border-left: 2px solid var(--emerald);
-  text-align: left;
-  background: rgba(45, 107, 79, 0.04);
-  border-radius: 2px;
-}
-
-.schedule-prologue-label {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--emerald);
-  margin-bottom: 0.4rem;
-}
-
-.schedule-prologue-text {
-  font-family: var(--sans);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--charcoal);
-}
-
 .schedule-list {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .schedule-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(61, 53, 48, 0.1);
+}
+
+.schedule-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .schedule-date {
@@ -816,6 +795,21 @@ body {
   font-size: clamp(2rem, 6vw, 2.8rem);
   margin: 0.5rem 0 1.25rem;
 }
+
+.toc-group-label {
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ruby);
+  margin: 1.5rem 0 0.4rem;
+}
+
+.toc-group-label:first-of-type { margin-top: 0.5rem; }
 
 .toc-list {
   list-style: none;
