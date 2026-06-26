@@ -33,9 +33,9 @@
         <li><a href="#home"     data-en="Home"     data-es="Inicio">Home</a></li>
         <li><a href="#story"    data-en="About"    data-es="Nosotros">About</a></li>
         <li><a href="#schedule" data-en="Schedule" data-es="Programa">Schedule</a></li>
+        <li><a href="#rsvp"     data-en="RSVP"     data-es="Confirmar">RSVP</a></li>
         <li><a href="antigua.html" data-en="Travel" data-es="Viaje">Travel</a></li>
         <li><a href="#faq"      data-en="FAQ"      data-es="Preguntas">FAQ</a></li>
-        <li><a href="#rsvp"     data-en="RSVP"     data-es="Confirmar">RSVP</a></li>
         <li><a href="#registry" data-en="Registry" data-es="Regalos">Registry</a></li>
         <li><a href="#gallery"  data-en="Photos"   data-es="Fotos">Photos</a></li>
       </ul>
@@ -77,25 +77,6 @@
         </div>
 
         <p class="countdown" id="countdown" aria-live="polite"></p>
-
-        <p class="tagline"
-          data-en="A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you."
-          data-es="Una semana de celebración en La Antigua — ruinas, volcanes y cuatro culturas entretejidas. No vemos la hora de compartirla contigo."
-        >
-          A week of celebration in La Antigua — ruins, volcanoes, and four cultures woven together. We can't wait to share it with you.
-        </p>
-
-        <div class="calendar-buttons" role="group" aria-label="Add to calendar">
-          <button class="cal-btn" onclick="addToGoogle()">
-            <span data-en="Add to Google Calendar" data-es="Agregar a Google Calendar">Add to Google Calendar</span>
-          </button>
-          <button class="cal-btn" onclick="addToApple()">
-            <span data-en="Add to Apple Calendar" data-es="Agregar a Apple Calendar">Add to Apple Calendar</span>
-          </button>
-          <button class="cal-btn" onclick="addToOutlook()">
-            <span data-en="Add to Outlook" data-es="Agregar a Outlook">Add to Outlook</span>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -115,36 +96,50 @@
     <!-- ─── Schedule ─────────────────────────────────────────── -->
     <section id="schedule" class="section" aria-labelledby="schedule-heading">
       <h2 id="schedule-heading" class="section-heading" data-en="Schedule" data-es="Programa">Schedule</h2>
-      <p class="section-intro"
-        data-en="Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date."
-        data-es="Tres días de celebración en La Antigua. Las horas y los lugares se confirmarán más cerca de la fecha."
-      >Three days of celebration in La Antigua. Times and venues will be confirmed closer to the date.</p>
       <div id="schedule-list" class="schedule-list"></div>
+    </section>
+
+    <!-- ─── RSVP ─────────────────────────────────────────────── -->
+    <section id="rsvp" class="section" aria-labelledby="rsvp-heading">
+      <h2 id="rsvp-heading" class="section-heading" data-en="RSVP" data-es="Confirmar Asistencia">RSVP</h2>
+      <p class="section-intro"
+        data-en="We can't wait to celebrate with you. Please let us know whether you can join us."
+        data-es="No vemos la hora de celebrar contigo. Por favor confirma tu asistencia."
+      >We can't wait to celebrate with you. Please let us know whether you can join us.</p>
+
+      <p class="rsvp-deadline"
+        data-en="Kindly respond by December 1, 2026"
+        data-es="Por favor responde antes del 1 de diciembre de 2026"
+      >Kindly respond by December 1, 2026</p>
+
+      <a class="cta-btn" href="https://amorenruinas.thatstheone.com/rsvp/contact"
+         target="_blank" rel="noopener"
+         data-en="RSVP" data-es="Confirmar Asistencia">RSVP</a>
+
+      <p class="rsvp-note"
+        data-en="The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help."
+        data-es="El enlace abre nuestro formulario de confirmación. ¿Algún problema? Responde a tu invitación y te ayudamos."
+      >The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help.</p>
     </section>
 
     <!-- ─── FAQ ──────────────────────────────────────────────── -->
     <section id="faq" class="section" aria-labelledby="faq-heading">
       <h2 id="faq-heading" class="section-heading" data-en="FAQ" data-es="Preguntas Frecuentes">FAQ</h2>
 
-      <p class="section-intro"
-        data-en="Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide."
-        data-es="A continuación, preguntas específicas sobre la boda. Para preguntas prácticas sobre visitar Antigua y Guatemala — vuelos, dinero, comida, seguridad, qué empacar — consulta nuestra guía de viaje."
-      >Wedding-specific questions below. For practical questions about visiting Antigua and Guatemala — flights, money, food, safety, packing — see our travel guide.</p>
-
       <p class="faq-guide-link">
         <a href="antigua.html"
-           data-en="Visiting Antigua &amp; Guatemala — full travel guide →"
-           data-es="Visitando Antigua y Guatemala — guía completa →">
-          Visiting Antigua &amp; Guatemala — full travel guide →
+           data-en="Planning your trip? See our full Antigua &amp; Guatemala travel guide →"
+           data-es="¿Planeando tu viaje? Consulta nuestra guía completa de Antigua y Guatemala →">
+          Planning your trip? See our full Antigua &amp; Guatemala travel guide →
         </a>
       </p>
 
       <div class="faq-list">
         <details class="faq-item">
           <summary data-en="What's the dress code?" data-es="¿Cuál es el código de vestimenta?">What's the dress code?</summary>
-          <p data-en="Dressy but relaxed — no suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome buffet and farewell brunch are casual."
-             data-es="Elegante pero relajado — no hace falta traje, corbata, esmoquin ni vestido largo. Para que te hagas una idea: los hombres pueden usar una camisa de botones o de lino con pantalón, o un saco ligero; las mujeres un vestido veraniego, un vestido de coctel, o una blusa bonita con falda. Piensa en una linda cena de jardín. Los tonos tierra y los estampados florales van bien con el lugar. Las calles son empedradas, así que usa zapatos cómodos para caminar — deja los tacones de aguja en casa. Las noches en Antigua refrescan, así que trae una chaqueta o un chal ligero. El buffet de bienvenida y el brunch de despedida son casuales.">
-            Dressy but relaxed — no suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome buffet and farewell brunch are casual.
+          <p data-en="For the wedding day: dressy but relaxed — what some call &quot;garden cocktail.&quot; No suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome cocktail and farewell brunch are garden casual — relaxed, but a touch more put-together than everyday."
+             data-es="Para el día de la boda: elegante pero relajado — lo que algunos llaman &quot;cóctel de jardín.&quot; No hace falta traje, corbata, esmoquin ni vestido largo. Para que te hagas una idea: los hombres pueden usar una camisa de botones o de lino con pantalón, o un saco ligero; las mujeres un vestido veraniego, un vestido de coctel, o una blusa bonita con falda. Piensa en una linda cena de jardín. Los tonos tierra y los estampados florales van bien con el lugar. Las calles son empedradas, así que usa zapatos cómodos para caminar — deja los tacones de aguja en casa. Las noches en Antigua refrescan, así que trae una chaqueta o un chal ligero. El cóctel de bienvenida y el brunch de despedida son casuales de jardín — relajados, pero un poco más arreglados que el día a día.">
+            For the wedding day: dressy but relaxed — what some call "garden cocktail." No suits, ties, tuxedos, or floor-length gowns required. For a sense of it: men can wear a button-down or linen shirt with slacks, or a light blazer; women a sundress, cocktail dress, or a nice blouse and skirt. Think a beautiful garden dinner party. Earth tones and florals suit the setting. The streets are cobblestone, so wear shoes you can walk in — leave the stiletto heels at home. Antigua's evenings get cool, so bring a light jacket or wrap. The welcome cocktail and farewell brunch are garden casual — relaxed, but a touch more put-together than everyday.
           </p>
         </details>
 
@@ -176,29 +171,6 @@
           </p>
         </details>
       </div>
-    </section>
-
-    <!-- ─── RSVP ─────────────────────────────────────────────── -->
-    <section id="rsvp" class="section" aria-labelledby="rsvp-heading">
-      <h2 id="rsvp-heading" class="section-heading" data-en="RSVP" data-es="Confirmar Asistencia">RSVP</h2>
-      <p class="section-intro"
-        data-en="We can't wait to celebrate with you. Please let us know whether you can join us by December 1, 2026."
-        data-es="No vemos la hora de celebrar contigo. Por favor confirma tu asistencia antes del 1 de diciembre de 2026."
-      >We can't wait to celebrate with you. Please let us know whether you can join us by December 1, 2026.</p>
-
-      <p class="rsvp-deadline"
-        data-en="Kindly respond by December 1, 2026"
-        data-es="Por favor responde antes del 1 de diciembre de 2026"
-      >Kindly respond by December 1, 2026</p>
-
-      <a class="cta-btn" href="https://amorenruinas.thatstheone.com/rsvp/contact"
-         target="_blank" rel="noopener"
-         data-en="RSVP" data-es="Confirmar Asistencia">RSVP</a>
-
-      <p class="rsvp-note"
-        data-en="The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help."
-        data-es="El enlace abre nuestro formulario de confirmación. ¿Algún problema? Responde a tu invitación y te ayudamos."
-      >The link opens our RSVP form. Having trouble? Just reply to your invitation and we'll help.</p>
     </section>
 
     <!-- ─── Registry ─────────────────────────────────────────── -->
