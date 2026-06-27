@@ -272,7 +272,7 @@ function googleUrl(evt) {
 /* ─── Optional Hero Image ────────────────────────────────────── */
 // To enable the hero photo, set HERO_SRC to the image path or URL.
 // Leave as empty string to hide it.
-const HERO_SRC = 'ProposalHydra0062.jpg';
+const HERO_SRC = 'imgs/ProposalHydra0062.jpg';
 
 (function initHero() {
   if (!HERO_SRC) return;
@@ -282,4 +282,18 @@ const HERO_SRC = 'ProposalHydra0062.jpg';
   img.src      = HERO_SRC;
   figure.hidden = false;
   figure.removeAttribute('aria-hidden');
+})();
+
+/* ─── Click-to-Play Videos (Our Love Story) ─────────────────── */
+(function initVideoTap() {
+  document.querySelectorAll('.photo-box.video-tap').forEach(box => {
+    const video = box.querySelector('video');
+    const btn   = box.querySelector('.play-btn');
+    if (!video || !btn) return;
+    btn.addEventListener('click', () => {
+      video.controls = true;
+      video.play();
+      box.classList.add('is-playing');
+    });
+  });
 })();
