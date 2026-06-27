@@ -645,6 +645,10 @@ body {
   border-bottom: 1px solid rgba(122, 110, 104, 0.18);
 }
 
+.faq-item:last-child {
+  border-bottom: none;
+}
+
 .faq-item summary {
   list-style: none;
   cursor: pointer;
