@@ -2,7 +2,7 @@
 
 let currentLang = 'en';
 
-function setLang(lang) {
+function setLang(lang, persistHash = false) {
   currentLang = lang;
 
   // Update all translated elements. Some data-* values contain inline
@@ -23,17 +23,26 @@ function setLang(lang) {
   // Update <html lang>
   document.documentElement.lang = lang;
 
-  // Persist in URL hash (enables shareable links)
-  history.replaceState(null, '', lang === 'en' ? '#' : '#' + lang);
+  // Persist in URL hash (enables shareable links). Only do this on an
+  // explicit user-driven toggle — never on page load or internal
+  // re-renders, or it clobbers section anchors like #rsvp.
+  if (persistHash) {
+    history.replaceState(null, '', lang === 'en' ? '#' : '#' + lang);
+  }
 }
 
 // Read hash on load
 (function init() {
   const hash = location.hash.replace('#', '').toLowerCase();
-  if (hash === 'es') {
-    setLang('es');
-  } else {
-    setLang('en');
+  setLang(hash === 'es' ? 'es' : 'en');
+
+  // If the hash points at a section (e.g. #rsvp from another page's nav),
+  // scroll there once the page has fully loaded — the hero image and
+  // schedule list render after this point and shift layout below them.
+  if (hash && hash !== 'es') {
+    window.addEventListener('load', () => {
+      document.getElementById(hash)?.scrollIntoView({ block: 'start' });
+    });
   }
 })();
 
