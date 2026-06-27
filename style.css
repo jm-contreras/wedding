@@ -109,6 +109,21 @@ body {
   font-weight: 500;
 }
 
+@media (max-width: 600px) {
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.35rem;
+  }
+
+  .site-nav-list {
+    flex: 1 1 100%;
+    overflow-x: visible;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 /* ─── Language Toggle ────────────────────────────────────────── */
 .lang-toggle {
   display: flex;
