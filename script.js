@@ -50,10 +50,10 @@ const EVENTS = [
     subtitle_es: 'Cóctel de Bienvenida',
     time_en: 'Evening',
     time_es: 'Por la noche',
-    location_en: 'La Antigua — venue to be announced',
-    location_es: 'La Antigua — lugar por anunciar',
-    attire_en: 'Garden casual',
-    attire_es: 'Casual de jardín',
+    location_en: 'La Antigua, venue to be announced',
+    location_es: 'La Antigua, lugar por anunciar',
+    attire_en: 'Festive garden casual',
+    attire_es: 'Casual festivo de jardín',
     description_en: 'A relaxed cocktail to welcome everyone arriving from afar.',
     description_es: 'Un cóctel relajado para dar la bienvenida a quienes llegan desde lejos.',
   },
@@ -69,8 +69,8 @@ const EVENTS = [
     time_es: 'Desde la tarde hasta la noche',
     location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
     location_es: 'Las Ruinas del Convento de Santa Clara, La Antigua',
-    attire_en: 'Garden cocktail',
-    attire_es: 'Cóctel de jardín',
+    attire_en: 'Festive garden cocktail',
+    attire_es: 'Cóctel festivo de jardín',
     description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
     description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
@@ -85,10 +85,10 @@ const EVENTS = [
     subtitle_es: 'Brunch de Despedida',
     time_en: 'Early afternoon',
     time_es: 'Primera hora de la tarde',
-    location_en: 'La Antigua — venue to be announced',
-    location_es: 'La Antigua — lugar por anunciar',
-    attire_en: 'Garden casual',
-    attire_es: 'Casual de jardín',
+    location_en: 'La Antigua, venue to be announced',
+    location_es: 'La Antigua, lugar por anunciar',
+    attire_en: 'Casual',
+    attire_es: 'Casual',
     description_en: 'Coffee, a traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
     description_es: 'Café, desayuno guatemalteco tradicional y despedidas antes de que todos regresen a casa.',
   },
@@ -141,7 +141,7 @@ function fmtDate(yyyymmdd, lang) {
 function buildICS(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma — ${evt.title_en} (${evt.subtitle_en})`;
+    : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -177,7 +177,7 @@ function downloadICS(evt) {
 function googleUrl(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma — ${evt.title_en} (${evt.subtitle_en})`;
+    : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
   const params = new URLSearchParams({
     action:   'TEMPLATE',
     text:     title,
@@ -214,9 +214,6 @@ function googleUrl(evt) {
       </p>
       <p class="schedule-location">
         <span data-en="${evt.location_en}" data-es="${evt.location_es}">${evt.location_en}</span>
-      </p>
-      <p class="schedule-description">
-        <span data-en="${evt.description_en}" data-es="${evt.description_es}">${evt.description_en}</span>
       </p>
       <div class="schedule-actions">
         <a class="cal-link" href="${googleUrl(evt)}" target="_blank" rel="noopener">
@@ -281,6 +278,7 @@ const HERO_SRC = 'ProposalHydra0062.jpg';
   if (!HERO_SRC) return;
   const figure = document.getElementById('hero');
   const img    = document.getElementById('hero-img');
+  if (!figure || !img) return;
   img.src      = HERO_SRC;
   figure.hidden = false;
   figure.removeAttribute('aria-hidden');
