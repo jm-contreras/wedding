@@ -95,7 +95,11 @@
     <section id="going-steady" class="section section-wide guide-section">
       <h2 class="section-heading" data-en="Going Steady" data-es="Formalizando">Going Steady</h2>
       <div class="photo-placeholder-row">
-        <div class="photo-box"><img src="imgs/our-story/going-steady/photo-1.jpg" alt="Morgan and Juanma" loading="lazy" /></div>
+        <div class="photo-box">
+          <video autoplay muted loop playsinline poster="imgs/our-story/going-steady/clip-poster.jpg">
+            <source src="imgs/our-story/going-steady/clip.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="photo-box">
           <video autoplay muted loop playsinline poster="imgs/our-story/going-steady/boomerang-poster.jpg">
             <source src="imgs/our-story/going-steady/boomerang.mp4" type="video/mp4" />
@@ -160,10 +164,13 @@
       <h2 class="section-heading" data-en="The Next Chapter" data-es="El Próximo Capítulo">The Next Chapter</h2>
       <div class="photo-placeholder-row">
         <div class="photo-box"><img src="imgs/our-story/next-chapter/photo-1.jpg" alt="Morgan and Juanma" loading="lazy" /></div>
-        <div class="photo-box">
-          <video autoplay muted loop playsinline poster="imgs/our-story/next-chapter/video-poster.jpg">
+        <div class="photo-box video-tap">
+          <video poster="imgs/our-story/next-chapter/video-poster.jpg" preload="metadata" playsinline>
             <source src="imgs/our-story/next-chapter/video.mp4" type="video/mp4" />
           </video>
+          <button class="play-btn" type="button" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
         </div>
       </div>
 

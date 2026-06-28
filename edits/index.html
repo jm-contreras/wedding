@@ -234,8 +234,19 @@
   <footer class="site-footer">
     <p class="footer-text">
       <span data-en="With love, Morgan &amp; Juanma" data-es="Con cariño, Morgan y Juanma">With love, Morgan &amp; Juanma</span>
+      <button class="easter-egg-trigger" type="button" aria-label="A little surprise">&#9825;</button>
     </p>
   </footer>
+
+  <div class="easter-egg-modal" id="easter-egg-modal" hidden>
+    <div class="easter-egg-backdrop" data-close></div>
+    <div class="easter-egg-content">
+      <button class="easter-egg-close" type="button" aria-label="Close" data-close>&times;</button>
+      <video class="easter-egg-video" controls playsinline>
+        <source src="../imgs/amorenruinas.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

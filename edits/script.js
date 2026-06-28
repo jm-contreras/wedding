@@ -303,3 +303,27 @@ const HERO_SRC = '../imgs/ProposalHydra0062.jpg';
     });
   });
 })();
+
+/* ─── Easter Egg: Save-the-Date Video ─────────────────────────── */
+(function initEasterEgg() {
+  const trigger = document.querySelector('.easter-egg-trigger');
+  const modal   = document.getElementById('easter-egg-modal');
+  if (!trigger || !modal) return;
+  const video = modal.querySelector('video');
+
+  const open = () => {
+    modal.hidden = false;
+    video.currentTime = 0;
+    video.play();
+  };
+  const close = () => {
+    modal.hidden = true;
+    video.pause();
+  };
+
+  trigger.addEventListener('click', open);
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
