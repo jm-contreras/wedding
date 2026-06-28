@@ -1167,6 +1167,10 @@ body {
   justify-content: center;
 }
 
+.easter-egg-modal[hidden] {
+  display: none;
+}
+
 .easter-egg-backdrop {
   position: absolute;
   inset: 0;
