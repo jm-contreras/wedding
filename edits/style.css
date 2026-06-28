@@ -781,6 +781,10 @@ body {
   max-width: 56ch;
 }
 
+.faq-item .guide-list li {
+  color: var(--muted);
+}
+
 .faq-item .subhead {
   font-family: var(--sans);
   font-size: 0.75rem;
