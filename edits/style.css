@@ -275,7 +275,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 0.15rem 0.6rem;
@@ -308,8 +308,8 @@ body {
 }
 
 .cal-link {
-  background: var(--emerald-dark);
-  border: 1px solid var(--emerald-dark);
+  background: var(--ruby);
+  border: 1px solid var(--ruby);
   border-radius: 3px;
   color: var(--cream);
   cursor: pointer;
@@ -326,7 +326,7 @@ body {
 .cal-link:hover,
 .cal-link:focus-visible {
   background: transparent;
-  color: var(--emerald-dark);
+  color: var(--ruby);
   outline: none;
 }
 
@@ -439,7 +439,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
 }
 
 .countdown:empty { display: none; }
@@ -744,7 +744,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   margin-bottom: 1.5rem;
 }
 
