@@ -200,10 +200,10 @@ function googleUrl(evt) {
   return `https://calendar.google.com/calendar/r/eventedit?${params}`;
 }
 
-function directionsUrl(evt) {
+function mapUrl(evt) {
   if (!evt.mapsQuery) return null;
-  const params = new URLSearchParams({ api: '1', destination: evt.mapsQuery });
-  return `https://www.google.com/maps/dir/?${params}`;
+  const params = new URLSearchParams({ api: '1', query: evt.mapsQuery });
+  return `https://www.google.com/maps/search/?${params}`;
 }
 
 /* ─── Schedule Rendering ──────────────────────────────────────── */
@@ -242,12 +242,12 @@ function directionsUrl(evt) {
             </button>
           </div>
         </div>
-        ${directionsUrl(evt)
-          ? `<a class="cal-link" href="${directionsUrl(evt)}" target="_blank" rel="noopener">
-               <span data-en="Directions" data-es="Cómo llegar">Directions</span>
+        ${mapUrl(evt)
+          ? `<a class="cal-link" href="${mapUrl(evt)}" target="_blank" rel="noopener">
+               <span data-en="Map" data-es="Mapa">Map</span>
              </a>`
           : `<span class="cal-link cal-link-disabled" aria-disabled="true">
-               <span data-en="Directions" data-es="Cómo llegar">Directions</span>
+               <span data-en="Map" data-es="Mapa">Map</span>
              </span>`
         }
       </div>

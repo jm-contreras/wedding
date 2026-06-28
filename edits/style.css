@@ -322,6 +322,10 @@ body {
 }
 
 .cal-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   background: var(--ruby);
   border: 1px solid var(--ruby);
   border-radius: 3px;
@@ -333,6 +337,7 @@ body {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
+  line-height: 1;
   padding: 0.5rem 0.9rem;
   transition: background 0.2s, color 0.2s;
 }
