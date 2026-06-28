@@ -245,12 +245,10 @@ body {
   align-items: center;
   gap: 0.3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(61, 53, 48, 0.1);
 }
 
 .schedule-item:last-child {
   padding-bottom: 0;
-  border-bottom: none;
 }
 
 .schedule-date {
@@ -269,15 +267,6 @@ body {
   font-style: italic;
   letter-spacing: 0.01em;
   color: var(--charcoal);
-}
-
-.schedule-subtitle {
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--emerald);
 }
 
 .schedule-meta {
@@ -318,25 +307,25 @@ body {
 }
 
 .cal-link {
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--ruby);
-  color: var(--ruby);
+  background: var(--ruby);
+  border: 1px solid var(--ruby);
+  border-radius: 3px;
+  color: var(--cream);
   cursor: pointer;
   font-family: var(--sans);
   font-size: 0.7rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.25rem 0.1rem;
-  transition: color 0.2s, border-color 0.2s;
+  padding: 0.5rem 0.9rem;
+  transition: background 0.2s, color 0.2s;
 }
 
 .cal-link:hover,
 .cal-link:focus-visible {
-  color: var(--charcoal);
-  border-color: var(--charcoal);
+  background: transparent;
+  color: var(--ruby);
   outline: none;
 }
 
@@ -353,7 +342,7 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  filter: saturate(0.88) sepia(0.12) brightness(1.02) contrast(1.03);
+  filter: saturate(0.65) sepia(0.35) brightness(1.05) contrast(1.08) hue-rotate(-6deg);
 }
 
 /* ─── Section Banner (in-page landscape photo) ───────────────── */
@@ -1097,7 +1086,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(0.88) sepia(0.12) brightness(1.02) contrast(1.03);
+  filter: saturate(0.65) sepia(0.35) brightness(1.05) contrast(1.08) hue-rotate(-6deg);
 }
 
 .photo-box.video-tap .play-btn {
@@ -1141,7 +1130,6 @@ body {
   width: 100%;
   padding: 2rem 1.5rem 3rem;
   text-align: center;
-  border-top: 1px solid rgba(122, 110, 104, 0.12);
 }
 
 .footer-text {

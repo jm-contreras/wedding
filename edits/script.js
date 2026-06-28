@@ -213,9 +213,6 @@ function googleUrl(evt) {
       <h3 class="schedule-title">
         <span data-en="${evt.subtitle_en}" data-es="${evt.subtitle_es}">${evt.subtitle_en}</span>
       </h3>
-      <p class="schedule-subtitle">
-        <span data-en="${evt.title_en}" data-es="${evt.title_es}">${evt.title_en}</span>
-      </p>
       <p class="schedule-meta">
         <span data-en="${evt.time_en}" data-es="${evt.time_es}">${evt.time_en}</span>
         <span class="schedule-sep" aria-hidden="true">·</span>
