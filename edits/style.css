@@ -349,6 +349,17 @@ body {
   outline: none;
 }
 
+.cal-link-outline {
+  background: transparent;
+  color: var(--ruby);
+}
+
+.cal-link-outline:hover,
+.cal-link-outline:focus-visible {
+  background: var(--ruby);
+  color: var(--cream);
+}
+
 .cal-menu {
   position: absolute;
   top: calc(100% + 0.4rem);
