@@ -83,6 +83,7 @@ const EVENTS = [
     description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
     description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
+    mapsQuery: 'Convento Santa Clara Antigua Guatemala',
   },
   {
     id: 'brunch',
@@ -199,6 +200,12 @@ function googleUrl(evt) {
   return `https://calendar.google.com/calendar/r/eventedit?${params}`;
 }
 
+function directionsUrl(evt) {
+  if (!evt.mapsQuery) return null;
+  const params = new URLSearchParams({ api: '1', destination: evt.mapsQuery });
+  return `https://www.google.com/maps/dir/?${params}`;
+}
+
 /* ─── Schedule Rendering ──────────────────────────────────────── */
 
 (function renderSchedule() {
@@ -235,6 +242,14 @@ function googleUrl(evt) {
             </button>
           </div>
         </div>
+        ${directionsUrl(evt)
+          ? `<a class="cal-link" href="${directionsUrl(evt)}" target="_blank" rel="noopener">
+               <span data-en="Directions" data-es="Cómo llegar">Directions</span>
+             </a>`
+          : `<span class="cal-link cal-link-disabled" aria-disabled="true">
+               <span data-en="Directions" data-es="Cómo llegar">Directions</span>
+             </span>`
+        }
       </div>
     </article>
   `).join('');

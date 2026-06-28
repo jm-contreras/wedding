@@ -303,8 +303,18 @@ body {
 
 .schedule-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   margin-top: 0.5rem;
+}
+
+.cal-link-disabled {
+  background: transparent;
+  border-color: rgba(122, 110, 104, 0.35);
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .cal-dropdown {
@@ -362,7 +372,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-decoration: none;
-  text-align: left;
+  text-align: center;
   padding: 0.6rem 0.9rem;
   transition: background 0.2s, color 0.2s;
 }
