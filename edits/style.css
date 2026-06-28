@@ -262,7 +262,7 @@ body {
 
 .schedule-title {
   font-family: var(--serif);
-  font-size: clamp(1.4rem, 4vw, 1.7rem);
+  font-size: clamp(1.6rem, 4.5vw, 1.95rem);
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.01em;
@@ -307,8 +307,8 @@ body {
 }
 
 .cal-link {
-  background: var(--ruby);
-  border: 1px solid var(--ruby);
+  background: var(--emerald);
+  border: 1px solid var(--emerald);
   border-radius: 3px;
   color: var(--cream);
   cursor: pointer;
@@ -325,7 +325,7 @@ body {
 .cal-link:hover,
 .cal-link:focus-visible {
   background: transparent;
-  color: var(--ruby);
+  color: var(--emerald);
   outline: none;
 }
 
@@ -342,7 +342,6 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  filter: saturate(0.65) sepia(0.35) brightness(1.05) contrast(1.08) hue-rotate(-6deg);
 }
 
 /* ─── Section Banner (in-page landscape photo) ───────────────── */
@@ -1078,6 +1077,8 @@ body {
   border-radius: 4px;
   overflow: hidden;
   background: rgba(61, 53, 48, 0.05);
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 1px 6px rgba(61, 53, 48, 0.25);
 }
 
 .photo-box img,
@@ -1086,7 +1087,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: saturate(0.65) sepia(0.35) brightness(1.05) contrast(1.08) hue-rotate(-6deg);
+  filter: saturate(0.72) sepia(0.28) brightness(1.04) contrast(1.06) hue-rotate(-5deg);
 }
 
 .photo-box.video-tap .play-btn {
