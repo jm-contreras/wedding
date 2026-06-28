@@ -225,7 +225,7 @@ body {
 
 .section-intro {
   font-family: var(--serif);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
   max-width: 42ch;
@@ -294,7 +294,7 @@ body {
 
 .schedule-description {
   font-family: var(--serif);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--muted);
   max-width: 38ch;
@@ -523,7 +523,7 @@ body {
 /* ─── Story ──────────────────────────────────────────────────── */
 .story-text {
   font-family: var(--serif);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--charcoal);
   max-width: 42ch;
@@ -543,7 +543,7 @@ body {
 
 .travel-block p {
   font-family: var(--serif);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
 }
@@ -562,7 +562,7 @@ body {
 
 .map-note {
   font-family: var(--serif);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 1rem;
@@ -712,7 +712,7 @@ body {
 .faq-item p {
   padding: 0 0 1rem;
   font-family: var(--serif);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
   max-width: 56ch;
@@ -963,7 +963,7 @@ body {
 
 .guide-block p {
   font-family: var(--serif);
-  font-size: 0.92rem;
+  font-size: 1.08rem;
   line-height: 1.75;
   color: var(--charcoal);
 }
@@ -1003,7 +1003,7 @@ body {
   position: relative;
   padding-left: 1.25rem;
   font-family: var(--serif);
-  font-size: 0.92rem;
+  font-size: 1.08rem;
   line-height: 1.7;
   color: var(--charcoal);
 }
@@ -1042,7 +1042,7 @@ body {
 
 .phrase dd {
   font-family: var(--serif);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
