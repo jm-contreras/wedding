@@ -938,6 +938,8 @@ body {
 .guide-section {
   text-align: left;
   align-items: flex-start;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .guide-section .section-heading {
@@ -1141,67 +1143,10 @@ body {
   color: var(--muted);
 }
 
-.easter-egg-trigger {
-  display: inline-block;
-  margin-left: 0.4rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: rgba(122, 110, 104, 0.35);
-  transition: color 0.2s;
-  vertical-align: middle;
-}
-
-.easter-egg-trigger:hover,
-.easter-egg-trigger:focus-visible {
-  color: var(--ruby);
-}
-
-.easter-egg-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.easter-egg-modal[hidden] {
-  display: none;
-}
-
-.easter-egg-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(26, 20, 18, 0.92);
-}
-
-.easter-egg-content {
-  position: relative;
-  z-index: 1;
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.easter-egg-video {
-  display: block;
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 4px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-}
-
-.easter-egg-close {
-  position: absolute;
-  top: -2.25rem;
-  right: 0;
-  background: none;
-  border: none;
-  color: var(--cream);
-  font-size: 1.75rem;
-  line-height: 1;
-  cursor: pointer;
+.save-the-date-video {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */

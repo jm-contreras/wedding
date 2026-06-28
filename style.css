@@ -1092,6 +1092,12 @@ body {
   background: rgba(61, 53, 48, 0.05);
 }
 
+.save-the-date-video {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
 .photo-box img,
 .photo-box video {
   width: 100%;
