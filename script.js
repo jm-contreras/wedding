@@ -83,6 +83,7 @@ const EVENTS = [
     description_en: 'A ceremony at the Santa Clara ruins, followed by cocktails, dinner, and dancing late into the night.',
     description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
+    mapsQuery: 'Convento Santa Clara Antigua Guatemala',
   },
   {
     id: 'brunch',
@@ -199,6 +200,12 @@ function googleUrl(evt) {
   return `https://calendar.google.com/calendar/r/eventedit?${params}`;
 }
 
+function mapUrl(evt) {
+  if (!evt.mapsQuery) return null;
+  const params = new URLSearchParams({ api: '1', query: evt.mapsQuery });
+  return `https://www.google.com/maps/search/?${params}`;
+}
+
 /* ─── Schedule Rendering ──────────────────────────────────────── */
 
 (function renderSchedule() {
@@ -211,11 +218,8 @@ function googleUrl(evt) {
         <span data-en="${fmtDate(evt.date, 'en')}" data-es="${fmtDate(evt.date, 'es')}">${fmtDate(evt.date, 'en')}</span>
       </div>
       <h3 class="schedule-title">
-        <span data-en="${evt.title_en}" data-es="${evt.title_es}">${evt.title_en}</span>
-      </h3>
-      <p class="schedule-subtitle">
         <span data-en="${evt.subtitle_en}" data-es="${evt.subtitle_es}">${evt.subtitle_en}</span>
-      </p>
+      </h3>
       <p class="schedule-meta">
         <span data-en="${evt.time_en}" data-es="${evt.time_es}">${evt.time_en}</span>
         <span class="schedule-sep" aria-hidden="true">·</span>
@@ -225,21 +229,57 @@ function googleUrl(evt) {
         <span data-en="${evt.location_en}" data-es="${evt.location_es}">${evt.location_en}</span>
       </p>
       <div class="schedule-actions">
-        <a class="cal-link" href="${googleUrl(evt)}" target="_blank" rel="noopener">
-          <span data-en="Google" data-es="Google">Google</span>
-        </a>
-        <button class="cal-link" type="button" data-event-id="${evt.id}">
-          <span data-en="Apple / Outlook" data-es="Apple / Outlook">Apple / Outlook</span>
-        </button>
+        <div class="cal-dropdown">
+          <button class="cal-link cal-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <span data-en="Add to Calendar" data-es="Agregar al calendario">Add to Calendar</span>
+          </button>
+          <div class="cal-menu" hidden>
+            <a class="cal-menu-item" href="${googleUrl(evt)}" target="_blank" rel="noopener">
+              <span data-en="Google Calendar" data-es="Google Calendar">Google Calendar</span>
+            </a>
+            <button class="cal-menu-item" type="button" data-event-id="${evt.id}">
+              <span data-en="Apple / Outlook" data-es="Apple / Outlook">Apple / Outlook</span>
+            </button>
+          </div>
+        </div>
+        ${mapUrl(evt)
+          ? `<a class="cal-link" href="${mapUrl(evt)}" target="_blank" rel="noopener">
+               <span data-en="Map" data-es="Mapa">Map</span>
+             </a>`
+          : `<span class="cal-link cal-link-disabled" aria-disabled="true">
+               <span data-en="Map" data-es="Mapa">Map</span>
+             </span>`
+        }
       </div>
     </article>
   `).join('');
 
-  list.querySelectorAll('button[data-event-id]').forEach(btn => {
+  list.querySelectorAll('.cal-menu-item[data-event-id]').forEach(btn => {
     btn.addEventListener('click', () => {
       const evt = EVENTS.find(e => e.id === btn.dataset.eventId);
       if (evt) downloadICS(evt);
+      btn.closest('.cal-dropdown')?.querySelector('.cal-toggle')?.setAttribute('aria-expanded', 'false');
+      btn.closest('.cal-menu')?.setAttribute('hidden', '');
     });
+  });
+
+  list.querySelectorAll('.cal-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const menu = toggle.nextElementSibling;
+      const isOpen = !menu.hidden;
+      list.querySelectorAll('.cal-menu').forEach(m => m.hidden = true);
+      list.querySelectorAll('.cal-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) {
+        menu.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    list.querySelectorAll('.cal-menu').forEach(m => m.hidden = true);
+    list.querySelectorAll('.cal-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
   });
 
   // Re-apply current language to freshly rendered nodes

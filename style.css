@@ -4,6 +4,7 @@
   --ruby:       #8B1F22;
   --ruby-bright:#B22A30;
   --emerald:    #2D6B4F;
+  --emerald-dark: #1C4633;
   --sage:       #6B7A3D;
   --gold:       #C47A2A;
   --warm-black: #1A1412;
@@ -31,8 +32,8 @@ html {
 body {
   background-color: var(--cream);
   color: var(--charcoal);
-  font-family: var(--sans);
-  font-weight: 300;
+  font-family: var(--serif);
+  font-weight: 400;
   line-height: 1.6;
   min-height: 100dvh;
   display: flex;
@@ -181,12 +182,14 @@ body {
   text-align: center;
 }
 
-.section + .section {
-  border-top: 1px solid rgba(122, 110, 104, 0.12);
-}
-
 .section-hero {
   padding-top: clamp(2rem, 5vw, 3rem);
+}
+
+@media (max-width: 600px) {
+  #rsvp {
+    scroll-margin-top: calc(var(--nav-height) + 2rem);
+  }
 }
 
 .section-heading {
@@ -221,8 +224,8 @@ body {
 }
 
 .section-intro {
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
   max-width: 42ch;
@@ -243,12 +246,10 @@ body {
   align-items: center;
   gap: 0.3rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(61, 53, 48, 0.1);
 }
 
 .schedule-item:last-child {
   padding-bottom: 0;
-  border-bottom: none;
 }
 
 .schedule-date {
@@ -262,20 +263,11 @@ body {
 
 .schedule-title {
   font-family: var(--serif);
-  font-size: clamp(1.4rem, 4vw, 1.7rem);
+  font-size: clamp(1.6rem, 4.5vw, 1.95rem);
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.01em;
   color: var(--charcoal);
-}
-
-.schedule-subtitle {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--emerald);
 }
 
 .schedule-meta {
@@ -283,7 +275,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 0.15rem 0.6rem;
@@ -301,8 +293,8 @@ body {
 }
 
 .schedule-description {
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--muted);
   max-width: 38ch;
@@ -311,30 +303,104 @@ body {
 
 .schedule-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   margin-top: 0.5rem;
 }
 
+.cal-link-disabled {
+  background: transparent;
+  border-color: rgba(122, 110, 104, 0.35);
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cal-dropdown {
+  position: relative;
+}
+
 .cal-link {
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--ruby);
-  color: var(--ruby);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  background: var(--ruby);
+  border: 1px solid var(--ruby);
+  border-radius: 3px;
+  color: var(--cream);
   cursor: pointer;
   font-family: var(--sans);
   font-size: 0.7rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.25rem 0.1rem;
-  transition: color 0.2s, border-color 0.2s;
+  line-height: 1;
+  padding: 0.5rem 0.9rem;
+  transition: background 0.2s, color 0.2s;
 }
 
 .cal-link:hover,
 .cal-link:focus-visible {
+  background: transparent;
+  color: var(--ruby);
+  outline: none;
+}
+
+.cal-link-outline {
+  background: transparent;
+  color: var(--ruby);
+}
+
+.cal-link-outline:hover,
+.cal-link-outline:focus-visible {
+  background: var(--ruby);
+  color: var(--cream);
+}
+
+.cal-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-width: 9.5rem;
+  background: var(--cream);
+  border: 1px solid rgba(139, 31, 34, 0.25);
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(61, 53, 48, 0.12);
+  overflow: hidden;
+}
+
+.cal-menu[hidden] { display: none; }
+
+.cal-menu-item {
+  display: block;
+  background: none;
+  border: none;
   color: var(--charcoal);
-  border-color: var(--charcoal);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.6rem 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cal-menu-item + .cal-menu-item {
+  border-top: 1px solid rgba(122, 110, 104, 0.15);
+}
+
+.cal-menu-item:hover,
+.cal-menu-item:focus-visible {
+  background: rgba(139, 31, 34, 0.08);
+  color: var(--ruby);
   outline: none;
 }
 
@@ -523,12 +589,15 @@ body {
   letter-spacing: 0.04em;
   color: var(--charcoal);
   margin-bottom: 0.5rem;
+  text-align: center;
+  align-self: center;
+  width: 100%;
 }
 
 /* ─── Story ──────────────────────────────────────────────────── */
 .story-text {
-  font-family: var(--sans);
-  font-size: 0.95rem;
+  font-family: var(--serif);
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--charcoal);
   max-width: 42ch;
@@ -547,8 +616,8 @@ body {
 }
 
 .travel-block p {
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
 }
@@ -566,8 +635,8 @@ body {
 }
 
 .map-note {
-  font-family: var(--sans);
-  font-size: 0.85rem;
+  font-family: var(--serif);
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 1rem;
@@ -618,7 +687,10 @@ body {
 
 .faq-guide-btn {
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
   margin: 0.5rem 0 2rem;
 }
 
@@ -636,22 +708,6 @@ body {
 .faq-guide-link a:hover,
 .inline-link:hover {
   color: var(--charcoal);
-  border-color: var(--charcoal);
-}
-
-.inline-link {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.inline-link .link-text {
-  border-bottom: 1px solid var(--ruby);
-  padding-bottom: 1px;
-  transition: border-color 0.2s;
-}
-
-.inline-link:hover .link-text,
-.inline-link:focus-visible .link-text {
   border-color: var(--charcoal);
 }
 
@@ -716,11 +772,26 @@ body {
 
 .faq-item p {
   padding: 0 0 1rem;
-  font-family: var(--sans);
-  font-size: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
   line-height: 1.75;
   color: var(--muted);
   max-width: 56ch;
+}
+
+.faq-note {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--ruby);
+  padding: 0 0 1.25rem;
+  border-bottom: 1px solid rgba(122, 110, 104, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.faq-item .guide-list li {
+  color: var(--muted);
 }
 
 .faq-item .subhead {
@@ -749,7 +820,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--muted);
   margin-bottom: 1.5rem;
 }
 
@@ -946,6 +1017,8 @@ body {
 .guide-section {
   text-align: left;
   align-items: flex-start;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .guide-section .section-heading {
@@ -965,8 +1038,8 @@ body {
 .guide-block:last-child { margin-bottom: 0; }
 
 .guide-block p {
-  font-family: var(--sans);
-  font-size: 0.92rem;
+  font-family: var(--serif);
+  font-size: 1.08rem;
   line-height: 1.75;
   color: var(--charcoal);
 }
@@ -977,7 +1050,8 @@ body {
 
 /* Inline source links within the travel guide */
 .guide-block a,
-.guide-list a {
+.guide-list a,
+.story-text a {
   color: var(--ruby);
   text-decoration: none;
   border-bottom: 1px solid rgba(139, 31, 34, 0.4);
@@ -987,7 +1061,9 @@ body {
 .guide-block a:hover,
 .guide-block a:focus-visible,
 .guide-list a:hover,
-.guide-list a:focus-visible {
+.guide-list a:focus-visible,
+.story-text a:hover,
+.story-text a:focus-visible {
   border-bottom-color: var(--ruby);
   outline: none;
 }
@@ -1005,8 +1081,8 @@ body {
 .guide-list li {
   position: relative;
   padding-left: 1.25rem;
-  font-family: var(--sans);
-  font-size: 0.92rem;
+  font-family: var(--serif);
+  font-size: 1.08rem;
   line-height: 1.7;
   color: var(--charcoal);
 }
@@ -1014,11 +1090,13 @@ body {
 .guide-list li::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0.65em;
-  width: 0.4rem;
-  height: 1px;
+  left: 0.1rem;
+  top: 0.85em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
   background: var(--gold);
+  transform: translateY(-50%);
 }
 
 .packing-list li { padding-left: 1.5rem; }
@@ -1044,8 +1122,8 @@ body {
 }
 
 .phrase dd {
-  font-family: var(--sans);
-  font-size: 0.85rem;
+  font-family: var(--serif);
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
@@ -1057,7 +1135,7 @@ body {
 /* ─── Photo Placeholders (Our Love Story) ───────────────────── */
 .photo-placeholder-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
   margin-bottom: 1.25rem;
 }
@@ -1079,10 +1157,6 @@ body {
   background: rgba(61, 53, 48, 0.03);
 }
 
-@media (max-width: 480px) {
-  .photo-placeholder-row { grid-template-columns: repeat(2, 1fr); }
-}
-
 /* ─── Photo / Video Boxes (Our Love Story) ──────────────────── */
 .photo-box {
   position: relative;
@@ -1090,12 +1164,8 @@ body {
   border-radius: 4px;
   overflow: hidden;
   background: rgba(61, 53, 48, 0.05);
-}
-
-.save-the-date-video {
-  aspect-ratio: 9 / 16;
-  max-width: 320px;
-  margin: 0 auto;
+  border: 7px solid #FFFFFF;
+  box-shadow: 0 1px 6px rgba(61, 53, 48, 0.25);
 }
 
 .photo-box img,
@@ -1104,6 +1174,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(0.78) sepia(0.22) brightness(1.03) contrast(1.05) hue-rotate(-4deg);
 }
 
 .photo-box.video-tap .play-btn {
@@ -1147,7 +1218,6 @@ body {
   width: 100%;
   padding: 2rem 1.5rem 3rem;
   text-align: center;
-  border-top: 1px solid rgba(122, 110, 104, 0.12);
 }
 
 .footer-text {
@@ -1155,6 +1225,12 @@ body {
   font-size: 0.95rem;
   font-style: italic;
   color: var(--muted);
+}
+
+.save-the-date-video {
+  aspect-ratio: 9 / 16;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */
