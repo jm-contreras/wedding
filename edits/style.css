@@ -32,8 +32,8 @@ html {
 body {
   background-color: var(--cream);
   color: var(--charcoal);
-  font-family: var(--sans);
-  font-weight: 300;
+  font-family: var(--serif);
+  font-weight: 400;
   line-height: 1.6;
   min-height: 100dvh;
   display: flex;
@@ -515,6 +515,12 @@ body {
   letter-spacing: 0.04em;
   color: var(--charcoal);
   margin-bottom: 0.5rem;
+}
+
+.subhead-center {
+  text-align: center;
+  align-self: center;
+  width: 100%;
 }
 
 /* ─── Story ──────────────────────────────────────────────────── */
