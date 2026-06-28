@@ -781,6 +781,17 @@ body {
   max-width: 56ch;
 }
 
+.faq-note {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--ruby);
+  padding: 0 0 1.25rem;
+  border-bottom: 1px solid rgba(122, 110, 104, 0.15);
+  margin-bottom: 0.5rem;
+}
+
 .faq-item .guide-list li {
   color: var(--muted);
 }
@@ -1081,11 +1092,13 @@ body {
 .guide-list li::before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0.65em;
-  width: 0.4rem;
-  height: 1px;
+  left: 0.1rem;
+  top: 0.85em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
   background: var(--gold);
+  transform: translateY(-50%);
 }
 
 .packing-list li { padding-left: 1.5rem; }
