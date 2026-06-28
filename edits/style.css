@@ -711,22 +711,6 @@ body {
   border-color: var(--charcoal);
 }
 
-.inline-link {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.inline-link .link-text {
-  border-bottom: 1px solid var(--ruby);
-  padding-bottom: 1px;
-  transition: border-color 0.2s;
-}
-
-.inline-link:hover .link-text,
-.inline-link:focus-visible .link-text {
-  border-color: var(--charcoal);
-}
-
 @media (min-width: 640px) {
   .map-frame { aspect-ratio: 16 / 10; }
 }
