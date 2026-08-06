@@ -237,12 +237,15 @@
     <section id="registry" class="section" aria-labelledby="registry-heading">
       <h2 id="registry-heading" class="section-heading" data-en="Gifts" data-es="Regalos">Gifts</h2>
       <p class="section-intro"
-        data-en="Your presence is the gift. Getting to Guatemala is no small thing, and having you there is more than we could ask for. If you'd like to do more, we're putting it toward our honeymoon in Mexico."
-        data-es="Tu presencia es el regalo. Llegar hasta Guatemala no es poca cosa, y tenerte ahí es más de lo que podríamos pedir. Si quieres hacer algo más, lo destinaremos a nuestra luna de miel en México."
-      >Your presence is the gift. Getting to Guatemala is no small thing, and having you there is more than we could ask for. If you'd like to do more, we're putting it toward our honeymoon in Mexico.</p>
+        data-en="Your presence in Guatemala is the gift. If you'd like to do more, we're putting it toward our honeymoon in Mexico."
+        data-es="Tu presencia en Guatemala es el regalo. Si quieres hacer algo más, lo destinaremos a nuestra luna de miel en México."
+      >Your presence in Guatemala is the gift. If you'd like to do more, we're putting it toward our honeymoon in Mexico.</p>
 
       <div class="registry-list">
-        <a class="registry-tile" href="https://venmo.com/u/jm-contreras" target="_blank" rel="noopener">
+        <!-- Deep link prefills the note so wedding gifts are identifiable in the
+             Venmo feed; audience=private keeps each one off the public feed. No
+             amount parameter on purpose. -->
+        <a class="registry-tile" href="https://venmo.com/jm-contreras?txn=pay&amp;note=Amor%20en%20Ruinas&amp;audience=private" target="_blank" rel="noopener">
           <span class="registry-name">Venmo</span>
           <span class="registry-meta" data-en="From the United States" data-es="Desde Estados Unidos">From the United States</span>
         </a>
