@@ -52,15 +52,17 @@ const EVENTS = [
   {
     id: 'welcome',
     date: '20270221',
-    dateEnd: '20270222',
+    startTime: '1600',
+    endTime: '1900',
     title_en: 'The Encounter',
     title_es: 'El Encuentro',
-    subtitle_en: 'Welcome Cocktail',
-    subtitle_es: 'Cóctel de Bienvenida',
-    time_en: 'Evening',
-    time_es: 'Por la noche',
-    location_en: 'La Antigua, venue to be announced',
-    location_es: 'La Antigua, lugar por anunciar',
+    subtitle_en: 'Welcome Reception',
+    subtitle_es: 'Recepción de Bienvenida',
+    time_en: '4:00 PM',
+    time_es: '4:00 p.m.',
+    location_en: 'Mesón Panza Verde, La Antigua',
+    location_es: 'Mesón Panza Verde, La Antigua',
+    mapsQuery: 'Meson Panza Verde Antigua Guatemala',
     attire_en: 'Festive garden casual',
     attire_es: 'Casual festivo de jardín',
     description_en: 'A relaxed cocktail to welcome everyone arriving from afar.',
@@ -69,13 +71,14 @@ const EVENTS = [
   {
     id: 'wedding',
     date: '20270222',
-    dateEnd: '20270223',
+    startTime: '1400',
+    endTime: '2100',
     title_en: 'By Fire',
     title_es: 'Por Fuego',
     subtitle_en: 'Wedding Ceremony, Dinner & Dancing',
     subtitle_es: 'Ceremonia de Boda, Cena y Baile',
-    time_en: 'Afternoon into night',
-    time_es: 'Desde la tarde hasta la noche',
+    time_en: '2:00 – 9:00 PM',
+    time_es: '2:00 – 9:00 p.m.',
     location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
     location_es: 'Las Ruinas del Convento de Santa Clara, La Antigua',
     attire_en: 'Festive garden cocktail',
@@ -88,15 +91,17 @@ const EVENTS = [
   {
     id: 'brunch',
     date: '20270223',
-    dateEnd: '20270224',
+    startTime: '1220',
+    endTime: '1420',
     title_en: 'The Beginning',
     title_es: 'El Principio',
     subtitle_en: 'Farewell Brunch',
     subtitle_es: 'Brunch de Despedida',
-    time_en: 'Early afternoon',
-    time_es: 'Primera hora de la tarde',
-    location_en: 'La Antigua, venue to be announced',
-    location_es: 'La Antigua, lugar por anunciar',
+    time_en: '12:20 PM',
+    time_es: '12:20 p.m.',
+    location_en: 'Mesón Panza Verde, La Antigua',
+    location_es: 'Mesón Panza Verde, La Antigua',
+    mapsQuery: 'Meson Panza Verde Antigua Guatemala',
     attire_en: 'Casual',
     attire_es: 'Casual',
     description_en: 'Coffee, a traditional Guatemalan breakfast, and goodbyes before everyone heads home.',
@@ -148,10 +153,21 @@ function fmtDate(yyyymmdd, lang) {
 
 /* ─── Calendar Helpers ────────────────────────────────────────── */
 
+// Antigua, Guatemala is UTC-6 year-round (no DST), so local wall-clock
+// times can be converted to UTC with a fixed 6-hour offset.
+function localToUTC(dateStr, timeStr) {
+  const y = +dateStr.slice(0, 4), m = +dateStr.slice(4, 6) - 1, d = +dateStr.slice(6, 8);
+  const hh = +timeStr.slice(0, 2), mm = +timeStr.slice(2, 4);
+  const utc = new Date(Date.UTC(y, m, d, hh + 6, mm));
+  const pad = n => String(n).padStart(2, '0');
+  return `${utc.getUTCFullYear()}${pad(utc.getUTCMonth() + 1)}${pad(utc.getUTCDate())}T${pad(utc.getUTCHours())}${pad(utc.getUTCMinutes())}00Z`;
+}
+
 function buildICS(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
     : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
+  const timed = evt.startTime && evt.endTime;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -160,8 +176,15 @@ function buildICS(evt) {
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     `UID:${evt.id}-morgan-juanma@wedding`,
-    `DTSTART;VALUE=DATE:${evt.date}`,
-    `DTEND;VALUE=DATE:${evt.dateEnd}`,
+    ...(timed
+      ? [
+          `DTSTART:${localToUTC(evt.date, evt.startTime)}`,
+          `DTEND:${localToUTC(evt.date, evt.endTime)}`,
+        ]
+      : [
+          `DTSTART;VALUE=DATE:${evt.date}`,
+          `DTEND;VALUE=DATE:${evt.dateEnd}`,
+        ]),
     `SUMMARY:${title}`,
     `LOCATION:${evt.location_en}`,
     `DESCRIPTION:${evt.description_en}`,
@@ -188,10 +211,13 @@ function googleUrl(evt) {
   const title = evt.isPrimary
     ? "Morgan & Juanma's Wedding"
     : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
+  const dates = evt.startTime && evt.endTime
+    ? `${localToUTC(evt.date, evt.startTime)}/${localToUTC(evt.date, evt.endTime)}`
+    : `${evt.date}/${evt.dateEnd}`;
   const params = new URLSearchParams({
     action:   'TEMPLATE',
     text:     title,
-    dates:    `${evt.date}/${evt.dateEnd}`,
+    dates,
     location: evt.location_en,
     details:  evt.description_en,
     sf:       'true',
@@ -321,7 +347,7 @@ function mapUrl(evt) {
 /* ─── Optional Hero Image ────────────────────────────────────── */
 // To enable the hero photo, set HERO_SRC to the image path or URL.
 // Leave as empty string to hide it.
-const HERO_SRC = '../imgs/ProposalHydra0062.jpg';
+const HERO_SRC = 'imgs/ProposalHydra0062.jpg';
 
 (function initHero() {
   if (!HERO_SRC) return;
