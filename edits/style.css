@@ -927,6 +927,20 @@ body {
   color: var(--muted);
 }
 
+/* Practical footnotes under the gift tiles — payment type, anti-impersonation */
+.registry-note {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 44ch;
+  margin-top: 1.5rem;
+}
+
+.registry-note + .registry-note {
+  margin-top: 0.75rem;
+}
+
 /* ─── Photo Gallery ──────────────────────────────────────────── */
 .photo-grid {
   width: 100%;
