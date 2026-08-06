@@ -941,6 +941,13 @@ body {
   margin-top: 0.75rem;
 }
 
+/* The gift tiles live inside a FAQ answer, which is left-aligned and needs the
+   answer's own bottom spacing above the item's divider. */
+.faq-item .registry-note {
+  margin-top: 1rem;
+  padding-bottom: 1.25rem;
+}
+
 /* ─── Photo Gallery ──────────────────────────────────────────── */
 .photo-grid {
   width: 100%;
