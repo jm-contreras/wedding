@@ -888,17 +888,17 @@ body {
 .registry-list {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  max-width: 360px;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  max-width: 320px;
 }
 
 .registry-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 1.1rem 1rem;
+  gap: 0.15rem;
+  padding: 0.7rem 0.5rem;
   border: 1px solid rgba(139, 31, 34, 0.4);
   border-radius: 3px;
   text-decoration: none;
@@ -915,14 +915,14 @@ body {
 
 .registry-name {
   font-family: var(--serif);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: var(--charcoal);
 }
 
 .registry-meta {
   font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -941,9 +941,14 @@ body {
   margin-top: 0.75rem;
 }
 
-/* The gift tiles live inside a FAQ answer, which is left-aligned and needs the
-   answer's own bottom spacing above the item's divider. */
+/* Inside a FAQ answer the bare `.faq-item p` rule out-specifies .registry-note,
+   which would render this footnote in the answer's serif. Restate it here so the
+   note stays quieter than the answer it sits under. */
 .faq-item .registry-note {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  max-width: 44ch;
   margin-top: 1rem;
   padding-bottom: 1.25rem;
 }
