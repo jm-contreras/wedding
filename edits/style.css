@@ -1248,6 +1248,15 @@ body {
   color: var(--muted);
 }
 
+.hotel-aside {
+  width: 100%;
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
 /* ─── Compact hotel rows (no group rate) ────────────────────── */
 .hotel-group-heading {
   margin-top: 2.75rem;
