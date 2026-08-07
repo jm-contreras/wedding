@@ -1132,12 +1132,14 @@ body {
   list-style: none;
   width: 100%;
   margin-top: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
 }
 
 .hotel-card {
+  flex: 1 1 280px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1145,6 +1147,11 @@ body {
   border: 1px solid rgba(61, 53, 48, 0.18);
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.35);
+}
+
+/* Two per row on wider screens; a lone last card centers at the same width. */
+@media (min-width: 660px) {
+  .hotel-card { max-width: calc(50% - 0.625rem); }
 }
 
 .hotel-top {
