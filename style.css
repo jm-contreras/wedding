@@ -727,6 +727,17 @@ body {
   border-bottom: none;
 }
 
+/* An open answer ends in its own subhead (e.g. FAREWELL BRUNCH), which would
+   otherwise read as a heading over the questions below it. Extra room before
+   the divider, and a ruby summary, mark where the answer starts and stops. */
+.faq-item[open] {
+  padding-bottom: 1.75rem;
+}
+
+.faq-item[open] > summary {
+  color: var(--ruby);
+}
+
 .faq-item summary {
   list-style: none;
   cursor: pointer;
