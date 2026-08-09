@@ -250,7 +250,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.5rem;
+}
+
+.schedule-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
 }
 
 .schedule-item {
@@ -258,11 +265,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  padding-bottom: 1.5rem;
-}
-
-.schedule-item:last-child {
-  padding-bottom: 0;
 }
 
 .schedule-date {
