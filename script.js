@@ -56,8 +56,8 @@ const EVENTS = [
     endTime: '1900',
     title_en: 'The Encounter',
     title_es: 'El Encuentro',
-    subtitle_en: 'Welcome Reception',
-    subtitle_es: 'Recepción de Bienvenida',
+    subtitle_en: 'Welcome Cocktails',
+    subtitle_es: 'Cóctel de Bienvenida',
     time_en: '4:00 PM',
     time_es: '4:00 p.m.',
     location_en: 'Mesón Panza Verde, La Antigua',
@@ -75,8 +75,8 @@ const EVENTS = [
     endTime: '2100',
     title_en: 'By Fire',
     title_es: 'Por Fuego',
-    subtitle_en: 'Wedding Ceremony, Dinner & Dancing',
-    subtitle_es: 'Ceremonia de Boda, Cena y Baile',
+    subtitle_en: 'Ceremony, Dinner & Dancing',
+    subtitle_es: 'Ceremonia, Cena y Baile',
     time_en: '2:00 PM',
     time_es: '2:00 p.m.',
     location_en: 'Ruins of the Convent of Santa Clara, La Antigua',
@@ -87,6 +87,24 @@ const EVENTS = [
     description_es: 'Una ceremonia en las Ruinas de Santa Clara, seguida de cóctel, cena y baile hasta entrada la noche.',
     isPrimary: true,
     mapsQuery: 'Convento Santa Clara Antigua Guatemala',
+  },
+  {
+    id: 'afterparty',
+    date: '20270222',
+    startTime: '2100',
+    endTime: '2359',
+    title_en: 'Into the Night',
+    title_es: 'En la Noche',
+    subtitle_en: 'After-Party',
+    subtitle_es: 'After Party',
+    time_en: '9:00 PM',
+    time_es: '9:00 p.m.',
+    location_en: 'Location TBD',
+    location_es: 'Por confirmar',
+    attire_en: 'Come as you are',
+    attire_es: 'Ven como estés',
+    description_en: 'The celebration keeps going — details to follow.',
+    description_es: 'La celebración continúa — más detalles pronto.',
   },
   {
     id: 'brunch',
@@ -238,46 +256,60 @@ function mapUrl(evt) {
   const list = document.getElementById('schedule-list');
   if (!list) return;
 
-  list.innerHTML = EVENTS.map(evt => `
-    <article class="schedule-item">
+  const groups = [];
+  EVENTS.forEach(evt => {
+    const current = groups[groups.length - 1];
+    if (current && current.date === evt.date) {
+      current.events.push(evt);
+    } else {
+      groups.push({ date: evt.date, events: [evt] });
+    }
+  });
+
+  list.innerHTML = groups.map(group => `
+    <div class="schedule-group">
       <div class="schedule-date">
-        <span data-en="${fmtDate(evt.date, 'en')}" data-es="${fmtDate(evt.date, 'es')}">${fmtDate(evt.date, 'en')}</span>
+        <span data-en="${fmtDate(group.date, 'en')}" data-es="${fmtDate(group.date, 'es')}">${fmtDate(group.date, 'en')}</span>
       </div>
-      <h3 class="schedule-title">
-        <span data-en="${evt.subtitle_en}" data-es="${evt.subtitle_es}">${evt.subtitle_en}</span>
-      </h3>
-      <p class="schedule-meta">
-        <span data-en="${evt.time_en}" data-es="${evt.time_es}">${evt.time_en}</span>
-        <span class="schedule-sep" aria-hidden="true">·</span>
-        <span data-en="${evt.attire_en}" data-es="${evt.attire_es}">${evt.attire_en}</span>
-      </p>
-      <p class="schedule-location">
-        <span data-en="${evt.location_en}" data-es="${evt.location_es}">${evt.location_en}</span>
-      </p>
-      <div class="schedule-actions">
-        <div class="cal-dropdown">
-          <button class="cal-link cal-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-            <span data-en="Add to Calendar" data-es="Agregar al calendario">Add to Calendar</span>
-          </button>
-          <div class="cal-menu" hidden>
-            <a class="cal-menu-item" href="${googleUrl(evt)}" target="_blank" rel="noopener">
-              <span data-en="Google Calendar" data-es="Google Calendar">Google Calendar</span>
-            </a>
-            <button class="cal-menu-item" type="button" data-event-id="${evt.id}">
-              <span data-en="Apple / Outlook" data-es="Apple / Outlook">Apple / Outlook</span>
-            </button>
+      ${group.events.map(evt => `
+        <article class="schedule-item">
+          <h3 class="schedule-title">
+            <span data-en="${evt.subtitle_en}" data-es="${evt.subtitle_es}">${evt.subtitle_en}</span>
+          </h3>
+          <p class="schedule-meta">
+            <span data-en="${evt.time_en}" data-es="${evt.time_es}">${evt.time_en}</span>
+            <span class="schedule-sep" aria-hidden="true">·</span>
+            <span data-en="${evt.attire_en}" data-es="${evt.attire_es}">${evt.attire_en}</span>
+          </p>
+          <p class="schedule-location">
+            <span data-en="${evt.location_en}" data-es="${evt.location_es}">${evt.location_en}</span>
+          </p>
+          <div class="schedule-actions">
+            <div class="cal-dropdown">
+              <button class="cal-link cal-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+                <span data-en="Add to Calendar" data-es="Agregar al calendario">Add to Calendar</span>
+              </button>
+              <div class="cal-menu" hidden>
+                <a class="cal-menu-item" href="${googleUrl(evt)}" target="_blank" rel="noopener">
+                  <span data-en="Google Calendar" data-es="Google Calendar">Google Calendar</span>
+                </a>
+                <button class="cal-menu-item" type="button" data-event-id="${evt.id}">
+                  <span data-en="Apple / Outlook" data-es="Apple / Outlook">Apple / Outlook</span>
+                </button>
+              </div>
+            </div>
+            ${mapUrl(evt)
+              ? `<a class="cal-link" href="${mapUrl(evt)}" target="_blank" rel="noopener">
+                   <span data-en="Map" data-es="Mapa">Map</span>
+                 </a>`
+              : `<span class="cal-link cal-link-disabled" aria-disabled="true">
+                   <span data-en="Map" data-es="Mapa">Map</span>
+                 </span>`
+            }
           </div>
-        </div>
-        ${mapUrl(evt)
-          ? `<a class="cal-link" href="${mapUrl(evt)}" target="_blank" rel="noopener">
-               <span data-en="Map" data-es="Mapa">Map</span>
-             </a>`
-          : `<span class="cal-link cal-link-disabled" aria-disabled="true">
-               <span data-en="Map" data-es="Mapa">Map</span>
-             </span>`
-        }
-      </div>
-    </article>
+        </article>
+      `).join('')}
+    </div>
   `).join('');
 
   list.querySelectorAll('.cal-menu-item[data-event-id]').forEach(btn => {
