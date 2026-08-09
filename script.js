@@ -183,13 +183,13 @@ function localToUTC(dateStr, timeStr) {
 
 function buildICS(evt) {
   const title = evt.isPrimary
-    ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
+    ? "Morgan & Juan Manuel's Wedding"
+    : `Morgan & Juan Manuel: ${evt.title_en} (${evt.subtitle_en})`;
   const timed = evt.startTime && evt.endTime;
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Morgan & Juanma//Wedding//EN',
+    'PRODID:-//Morgan & Juan Manuel//Wedding//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -227,8 +227,8 @@ function downloadICS(evt) {
 
 function googleUrl(evt) {
   const title = evt.isPrimary
-    ? "Morgan & Juanma's Wedding"
-    : `Morgan & Juanma: ${evt.title_en} (${evt.subtitle_en})`;
+    ? "Morgan & Juan Manuel's Wedding"
+    : `Morgan & Juan Manuel: ${evt.title_en} (${evt.subtitle_en})`;
   const dates = evt.startTime && evt.endTime
     ? `${localToUTC(evt.date, evt.startTime)}/${localToUTC(evt.date, evt.endTime)}`
     : `${evt.date}/${evt.dateEnd}`;
