@@ -108,9 +108,12 @@
         data-es="Por favor responde antes del 1 de diciembre de 2026"
       >Kindly respond by December 1, 2026</p>
 
-      <a class="cta-btn" href="https://amorenruinas.thatstheone.com/rsvp/contact"
-         target="_blank" rel="noopener"
-         data-en="Respond now" data-es="Responder ahora">Respond now</a>
+      <!-- RSVPs run through Paperless Post, so each guest responds from their own
+           invitation. There is no general link we can put on a public page. -->
+      <p class="rsvp-note"
+        data-en="Your invitation contains your personalized RSVP link. Check your email (or your text messages)."
+        data-es="Tu invitación contiene tu enlace personalizado de RSVP. Revisa tu correo electrónico (o tus mensajes de texto)."
+      >Your invitation contains your personalized RSVP link. Check your email (or your text messages).</p>
     </section>
 
     <!-- ─── FAQ ──────────────────────────────────────────────── -->
@@ -238,24 +241,10 @@
 
         <details class="faq-item" id="registry">
           <summary data-en="Are you registered?" data-es="¿Tienen mesa de regalos?">Are you registered?</summary>
-          <p data-en="No. Your presence in Guatemala is the gift. If you'd like to do more, anything you send goes toward our honeymoon in Mexico."
-             data-es="No. Tu presencia en Guatemala es el regalo. Si quieres hacer algo más, lo que envíes será para nuestra luna de miel en México.">
-            No. Your presence in Guatemala is the gift. If you'd like to do more, anything you send goes toward our honeymoon in Mexico.
+          <p data-en="Your presence in Guatemala is the real gift. If you'd like to do more, please check back here later for our registry."
+             data-es="Tu presencia en Guatemala es el verdadero regalo. Si quieres hacer algo más, vuelve a esta página más adelante para ver nuestra mesa de regalos.">
+            Your presence in Guatemala is the real gift. If you'd like to do more, please check back here later for our registry.
           </p>
-
-          <div class="registry-list">
-            <!-- Deep link prefills the note so wedding gifts are identifiable in the
-                 Venmo feed; audience=private keeps each one off the public feed. No
-                 amount parameter on purpose. -->
-            <a class="registry-tile" href="https://venmo.com/amorenruinas?txn=pay&amp;note=Amor%20en%20Ruinas&amp;audience=private" target="_blank" rel="noopener">
-              <span class="registry-name">Venmo</span>
-              <span class="registry-meta" data-en="United States" data-es="Estados Unidos">United States</span>
-            </a>
-            <a class="registry-tile" href="https://paypal.me/amorenruinas" target="_blank" rel="noopener">
-              <span class="registry-name">PayPal</span>
-              <span class="registry-meta" data-en="Everywhere else" data-es="Otros países">Everywhere else</span>
-            </a>
-          </div>
 
           <p class="registry-note"
             data-en="Any link for sending a gift will always appear on this page. We will never message you asking for money."

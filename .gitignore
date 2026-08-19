@@ -13,6 +13,11 @@ imgs/antigua.png
 imgs/hotel.png
 imgs/tuktuk.png
 
+# Local-preview symlinks so edits/ renders standalone in a browser.
+# They point at the root copies of assets that edits/ does not duplicate.
+edits/imgs
+edits/favicon.svg
+
 # OS / tooling
 .DS_Store
 .vercel/

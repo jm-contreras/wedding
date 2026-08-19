@@ -889,7 +889,7 @@ body {
 }
 
 .rsvp-note {
-  margin-top: 1.5rem;
+  margin: 1.5rem auto 0;
   font-family: var(--sans);
   font-size: 0.8rem;
   font-style: italic;
